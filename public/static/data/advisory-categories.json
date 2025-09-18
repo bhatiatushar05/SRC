@@ -1,0 +1,72 @@
+[
+  {
+    "label": "Education",
+    "am_ac": [
+      {
+        "id": 1,
+        "name": "Dr. Rajesh Kumar",
+        "designation": "Education Advisor",
+        "organization": "Ministry of Education",
+        "image": "/static/member/1.jpg",
+        "bio": "Expert in educational policy and curriculum development with 20+ years of experience.",
+        "email": "rajesh.kumar@example.com",
+        "phone": "+91-9876543210"
+      },
+      {
+        "id": 2,
+        "name": "Prof. Anita Sharma",
+        "designation": "Academic Consultant",
+        "organization": "Delhi University",
+        "image": "/static/member/2.jpg",
+        "bio": "Specialist in higher education reforms and student welfare programs.",
+        "email": "anita.sharma@example.com",
+        "phone": "+91-9876543211"
+      }
+    ]
+  },
+  {
+    "label": "Healthcare",
+    "am_ac": [
+      {
+        "id": 3,
+        "name": "Dr. Suresh Patel",
+        "designation": "Health Advisor",
+        "organization": "AIIMS Delhi",
+        "image": "/static/member/3.jpg",
+        "bio": "Leading healthcare professional with expertise in public health initiatives.",
+        "email": "suresh.patel@example.com",
+        "phone": "+91-9876543212"
+      }
+    ]
+  },
+  {
+    "label": "Environment",
+    "am_ac": [
+      {
+        "id": 4,
+        "name": "Dr. Priya Singh",
+        "designation": "Environmental Consultant",
+        "organization": "TERI",
+        "image": "/static/member/4.jpg",
+        "bio": "Environmental scientist focused on sustainable development and climate action.",
+        "email": "priya.singh@example.com",
+        "phone": "+91-9876543213"
+      }
+    ]
+  },
+  {
+    "label": "Technology",
+    "am_ac": [
+      {
+        "id": 5,
+        "name": "Mr. Vikram Mehta",
+        "designation": "Tech Advisor",
+        "organization": "NASSCOM",
+        "image": "/static/member/5.jpg",
+        "bio": "Technology strategist with focus on digital transformation and innovation.",
+        "email": "vikram.mehta@example.com",
+        "phone": "+91-9876543214"
+      }
+    ]
+  }
+]

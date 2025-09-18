@@ -1,0 +1,50 @@
+[
+  {
+    "id": 1,
+    "title": "Digital India Campaign",
+    "description": "Promoting digital literacy and technology adoption across rural India",
+    "image": "/static/placeholder-campaign.jpg",
+    "start_date": "2024-01-01",
+    "end_date": "2024-12-31",
+    "status": "active",
+    "participants": 5000,
+    "category": "Education",
+    "location": "Pan India"
+  },
+  {
+    "id": 2,
+    "title": "Clean Water Initiative",
+    "description": "Ensuring access to clean drinking water in underserved communities",
+    "image": "/static/placeholder-campaign.jpg",
+    "start_date": "2023-06-01",
+    "end_date": "2024-05-31",
+    "status": "active",
+    "participants": 3000,
+    "category": "Health",
+    "location": "Rural India"
+  },
+  {
+    "id": 3,
+    "title": "Women Empowerment Drive",
+    "description": "Supporting women's education and economic independence",
+    "image": "/static/placeholder-campaign.jpg",
+    "start_date": "2023-03-08",
+    "end_date": "2024-03-07",
+    "status": "active",
+    "participants": 2500,
+    "category": "Social",
+    "location": "Urban & Rural"
+  },
+  {
+    "id": 4,
+    "title": "Green Earth Mission",
+    "description": "Tree plantation and environmental conservation efforts",
+    "image": "/static/placeholder-campaign.jpg",
+    "start_date": "2023-01-01",
+    "end_date": "2023-12-31",
+    "status": "completed",
+    "participants": 10000,
+    "category": "Environment",
+    "location": "Multiple States"
+  }
+]

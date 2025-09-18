@@ -1,0 +1,62 @@
+[
+  {
+    "id": 1,
+    "name": "Dr. Amit Kumar",
+    "designation": "Founder & CEO",
+    "organization": "Social Responsibility Council",
+    "image": "/static/member/1.jpg",
+    "bio": "Visionary leader with 25+ years of experience in social development and policy making.",
+    "email": "amit.kumar@srcouncil.in",
+    "phone": "+91-9876543210",
+    "linkedin": "https://linkedin.com/in/amit-kumar",
+    "twitter": "https://twitter.com/amit_kumar"
+  },
+  {
+    "id": 2,
+    "name": "Ms. Priya Sharma",
+    "designation": "Director of Operations",
+    "organization": "Social Responsibility Council",
+    "image": "/static/member/2.jpg",
+    "bio": "Operations expert with focus on program management and community engagement.",
+    "email": "priya.sharma@srcouncil.in",
+    "phone": "+91-9876543211",
+    "linkedin": "https://linkedin.com/in/priya-sharma",
+    "twitter": "https://twitter.com/priya_sharma"
+  },
+  {
+    "id": 3,
+    "name": "Mr. Rajesh Verma",
+    "designation": "Head of Technology",
+    "organization": "Social Responsibility Council",
+    "image": "/static/member/3.jpg",
+    "bio": "Technology leader driving digital transformation in social impact initiatives.",
+    "email": "rajesh.verma@srcouncil.in",
+    "phone": "+91-9876543212",
+    "linkedin": "https://linkedin.com/in/rajesh-verma",
+    "twitter": "https://twitter.com/rajesh_verma"
+  },
+  {
+    "id": 4,
+    "name": "Dr. Sunita Patel",
+    "designation": "Head of Research",
+    "organization": "Social Responsibility Council",
+    "image": "/static/member/4.jpg",
+    "bio": "Research specialist with expertise in social impact measurement and evaluation.",
+    "email": "sunita.patel@srcouncil.in",
+    "phone": "+91-9876543213",
+    "linkedin": "https://linkedin.com/in/sunita-patel",
+    "twitter": "https://twitter.com/sunita_patel"
+  },
+  {
+    "id": 5,
+    "name": "Mr. Vikas Singh",
+    "designation": "Head of Partnerships",
+    "organization": "Social Responsibility Council",
+    "image": "/static/member/5.jpg",
+    "bio": "Partnership strategist building alliances with government and corporate sectors.",
+    "email": "vikas.singh@srcouncil.in",
+    "phone": "+91-9876543214",
+    "linkedin": "https://linkedin.com/in/vikas-singh",
+    "twitter": "https://twitter.com/vikas_singh"
+  }
+]

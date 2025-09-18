@@ -1,0 +1,59 @@
+{
+  "master_data": {
+    "image": "/static/placeholder-project.jpg",
+    "title": "Space Lab - Advanced Research Initiative",
+    "description": "ISRO-recognized Space Tutor organizations for the establishment of 'Space Labs' in EMRS"
+  },
+  "master_list": [
+    {
+      "image": "/static/placeholder-project.jpg",
+      "title": "Space Lab - Advanced Research Initiative",
+      "description": "ISRO-recognized Space Tutor organizations for the establishment of 'Space Labs' in EMRS"
+    },
+    {
+      "image": "/static/placeholder-project.jpg",
+      "title": "Digital India Initiative",
+      "description": "Promoting digital literacy and technology adoption across rural India"
+    },
+    {
+      "image": "/static/placeholder-project.jpg",
+      "title": "Clean Water Mission",
+      "description": "Ensuring access to clean drinking water in underserved communities"
+    }
+  ],
+  "banner": [
+    {
+      "image": "/static/slider/one.jpg",
+      "title": "Welcome to Social Responsibility Council",
+      "description": "Building a better tomorrow through collective action"
+    },
+    {
+      "image": "/static/slider/two.jpg",
+      "title": "Our Mission",
+      "description": "Empowering communities through sustainable development initiatives"
+    }
+  ],
+  "timeline": [
+    {
+      "year": "2023",
+      "title": "New Initiatives Launched",
+      "description": "Expanded our reach to 50+ communities across India"
+    },
+    {
+      "year": "2022",
+      "title": "Award Recognition",
+      "description": "Received National Excellence Award for Social Impact"
+    },
+    {
+      "year": "2021",
+      "title": "Digital Transformation",
+      "description": "Launched online platform for better community engagement"
+    }
+  ],
+  "stats": {
+    "projects_completed": 150,
+    "communities_served": 500,
+    "volunteers": 2500,
+    "funds_raised": 5000000
+  }
+}

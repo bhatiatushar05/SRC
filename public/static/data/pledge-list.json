@@ -1,0 +1,86 @@
+{
+  "latest_pledge": [
+    {
+      "id": 1,
+      "title": "Clean India Pledge",
+      "description": "Commit to keeping our surroundings clean and promoting hygiene awareness",
+      "image": "/static/placeholder-pledge.jpg",
+      "category": "Environment",
+      "participants": 1500,
+      "created_date": "2024-01-15",
+      "status": "active"
+    },
+    {
+      "id": 2,
+      "title": "Digital Literacy Pledge",
+      "description": "Help bridge the digital divide by teaching basic computer skills",
+      "image": "/static/placeholder-pledge.jpg",
+      "category": "Education",
+      "participants": 800,
+      "created_date": "2024-01-10",
+      "status": "active"
+    },
+    {
+      "id": 3,
+      "title": "Women Empowerment Pledge",
+      "description": "Support and promote women's rights and equal opportunities",
+      "image": "/static/placeholder-pledge.jpg",
+      "category": "Social",
+      "participants": 2000,
+      "created_date": "2024-01-05",
+      "status": "active"
+    }
+  ],
+  "all_pledges": [
+    {
+      "id": 1,
+      "title": "Clean India Pledge",
+      "description": "Commit to keeping our surroundings clean and promoting hygiene awareness",
+      "image": "/static/placeholder-pledge.jpg",
+      "category": "Environment",
+      "participants": 1500,
+      "created_date": "2024-01-15",
+      "status": "active"
+    },
+    {
+      "id": 2,
+      "title": "Digital Literacy Pledge",
+      "description": "Help bridge the digital divide by teaching basic computer skills",
+      "image": "/static/placeholder-pledge.jpg",
+      "category": "Education",
+      "participants": 800,
+      "created_date": "2024-01-10",
+      "status": "active"
+    },
+    {
+      "id": 3,
+      "title": "Women Empowerment Pledge",
+      "description": "Support and promote women's rights and equal opportunities",
+      "image": "/static/placeholder-pledge.jpg",
+      "category": "Social",
+      "participants": 2000,
+      "created_date": "2024-01-05",
+      "status": "active"
+    },
+    {
+      "id": 4,
+      "title": "Tree Plantation Pledge",
+      "description": "Plant and nurture trees to combat climate change",
+      "image": "/static/placeholder-pledge.jpg",
+      "category": "Environment",
+      "participants": 3000,
+      "created_date": "2023-12-20",
+      "status": "completed"
+    },
+    {
+      "id": 5,
+      "title": "Blood Donation Pledge",
+      "description": "Regularly donate blood to save lives",
+      "image": "/static/placeholder-pledge.jpg",
+      "category": "Healthcare",
+      "participants": 500,
+      "created_date": "2023-12-15",
+      "status": "active"
+    }
+  ]
+}

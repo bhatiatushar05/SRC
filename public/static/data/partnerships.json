@@ -1,0 +1,42 @@
+[
+  {
+    "id": 1,
+    "name": "Ministry of Education",
+    "type": "Government",
+    "description": "Collaboration on educational initiatives and policy development",
+    "logo": "/static/placeholder-partner.jpg",
+    "website": "https://education.gov.in",
+    "status": "active",
+    "start_date": "2023-01-01"
+  },
+  {
+    "id": 2,
+    "name": "Tata Consultancy Services",
+    "type": "Corporate",
+    "description": "Technology support and digital transformation initiatives",
+    "logo": "/static/placeholder-partner.jpg",
+    "website": "https://tcs.com",
+    "status": "active",
+    "start_date": "2023-03-15"
+  },
+  {
+    "id": 3,
+    "name": "UNESCO",
+    "type": "International",
+    "description": "Global education and cultural preservation programs",
+    "logo": "/static/placeholder-partner.jpg",
+    "website": "https://unesco.org",
+    "status": "active",
+    "start_date": "2022-06-01"
+  },
+  {
+    "id": 4,
+    "name": "Bill & Melinda Gates Foundation",
+    "type": "Foundation",
+    "description": "Healthcare and development initiatives funding",
+    "logo": "/static/placeholder-partner.jpg",
+    "website": "https://gatesfoundation.org",
+    "status": "active",
+    "start_date": "2023-09-01"
+  }
+]
