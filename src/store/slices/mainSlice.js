@@ -4,25 +4,27 @@ import { createSlice } from '@reduxjs/toolkit';
 const menuList = [
   {
     name: "About SRC",
-    link: "/about-us/",
+    link: "/about/src",
+    choice: false,
+    target: "",
+  },
+  {
+    name: "Council",
+    link: "",
     choice: true,
     target: "",
     options: [
       {
-        name: "Council",
-        subMenu: true,
+        name: "Advisory Board",
+        redirect: "/advisory/",
         target: "",
-        redirect: "#",
-        subMenuOptions: [
-          {
-            name: "Advisory Board",
-            redirect: "/advisory/",
-          },
-          {
-            name: "Team",
-            redirect: "/team/",
-          },
-        ]
+        subMenu: false,
+      },
+      {
+        name: "Team",
+        redirect: "/team/",
+        target: "",
+        subMenu: false,
       },
       {
         name: "Capabilities",

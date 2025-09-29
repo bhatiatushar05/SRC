@@ -1,4 +1,5 @@
 // Counter Section Component for Home Page
+import { useEffect } from 'react'
 import { useSelector, useDispatch } from 'react-redux'
 import { selectCounters, updateCounter } from '../store/homeSlice.js'
 

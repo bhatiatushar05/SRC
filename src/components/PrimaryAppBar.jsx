@@ -23,13 +23,13 @@ const PrimaryAppBar = () => {
         {options.map((option, index) => (
           <div key={index} className="relative group">
             {option.subMenu ? (
-              <>
+              <div className="relative">
                 <div className="px-4 py-3 text-white hover:bg-orange-500 cursor-pointer flex items-center justify-between">
                   <span>{option.name}</span>
-                  <ChevronDown className="w-4 h-4" />
+                  <ChevronDown className="w-4 h-4 ml-2" />
                 </div>
                 {option.subMenuOptions && (
-                  <div className="hidden group-hover:block absolute left-full top-0 w-64 bg-primary-600 rounded-md shadow-lg">
+                  <div className="absolute left-full top-0 w-64 bg-primary-600 rounded-md shadow-lg opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200">
                     {option.subMenuOptions.map((subOption, subIndex) => (
                       <div key={subIndex}>
                         {subOption.target === '_blank' ? (
@@ -53,7 +53,7 @@ const PrimaryAppBar = () => {
                     ))}
                   </div>
                 )}
-              </>
+              </div>
             ) : (
               <>
                 {option.target === '_blank' ? (
@@ -108,7 +108,7 @@ const PrimaryAppBar = () => {
                         {item.name}
                       </button>
                       {/* Dropdown Menu */}
-                      <div className="hidden group-hover:block">
+                      <div className="absolute top-full left-0 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200">
                         {renderSubmenu(item.options)}
                       </div>
                     </>
@@ -205,24 +205,57 @@ const PrimaryAppBar = () => {
                           <div className="ml-4 mt-2 space-y-2">
                             {item.options.map((option, optionIndex) => (
                               <div key={optionIndex}>
-                                {option.target === '_blank' ? (
-                                  <a
-                                    href={option.redirect}
-                                    target="_blank"
-                                    rel="noopener noreferrer"
-                                    className="block text-textColor py-2 hover:text-primary-600"
-                                    onClick={toggleMenu}
-                                  >
-                                    {option.name}
-                                  </a>
+                                {option.subMenu && option.subMenuOptions ? (
+                                  <div>
+                                    <div className="text-textColor py-2 font-medium">{option.name}</div>
+                                    <div className="ml-4 space-y-1">
+                                      {option.subMenuOptions.map((subOption, subIndex) => (
+                                        <div key={subIndex}>
+                                          {subOption.target === '_blank' ? (
+                                            <a
+                                              href={subOption.redirect}
+                                              target="_blank"
+                                              rel="noopener noreferrer"
+                                              className="block text-gray-600 py-1 hover:text-primary-600 text-sm"
+                                              onClick={toggleMenu}
+                                            >
+                                              {subOption.name}
+                                            </a>
+                                          ) : (
+                                            <Link
+                                              to={subOption.redirect}
+                                              className="block text-gray-600 py-1 hover:text-primary-600 text-sm"
+                                              onClick={toggleMenu}
+                                            >
+                                              {subOption.name}
+                                            </Link>
+                                          )}
+                                        </div>
+                                      ))}
+                                    </div>
+                                  </div>
                                 ) : (
-                                  <Link
-                                    to={option.redirect}
-                                    className="block text-textColor py-2 hover:text-primary-600"
-                                    onClick={toggleMenu}
-                                  >
-                                    {option.name}
-                                  </Link>
+                                  <>
+                                    {option.target === '_blank' ? (
+                                      <a
+                                        href={option.redirect}
+                                        target="_blank"
+                                        rel="noopener noreferrer"
+                                        className="block text-textColor py-2 hover:text-primary-600"
+                                        onClick={toggleMenu}
+                                      >
+                                        {option.name}
+                                      </a>
+                                    ) : (
+                                      <Link
+                                        to={option.redirect}
+                                        className="block text-textColor py-2 hover:text-primary-600"
+                                        onClick={toggleMenu}
+                                      >
+                                        {option.name}
+                                      </Link>
+                                    )}
+                                  </>
                                 )}
                               </div>
                             ))}
