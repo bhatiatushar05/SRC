@@ -1,7 +1,6 @@
 import { Outlet } from 'react-router-dom';
 import PrimaryAppBar from '../components/PrimaryAppBar';
 import MasterFooter from '../components/MasterFooter';
-import MasterFooterTwo from '../components/MasterFooterTwo';
 import Cookie from '../components/Cookie';
 
 const DefaultLayout = () => {
@@ -14,7 +13,6 @@ const DefaultLayout = () => {
         </div>
       </main>
       <div className="border-t border-gray-200" />
-      <MasterFooterTwo />
       <MasterFooter />
       <Cookie />
     </div>

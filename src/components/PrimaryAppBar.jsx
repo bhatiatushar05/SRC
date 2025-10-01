@@ -7,29 +7,41 @@ import { selectMenuList } from '../store/slices/mainSlice';
 const PrimaryAppBar = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [openSubmenu, setOpenSubmenu] = useState(null);
+  const [openNestedSubmenu, setOpenNestedSubmenu] = useState(null);
   const menuList = useSelector(selectMenuList);
 
   const toggleMenu = () => setIsOpen(!isOpen);
   
   const handleSubmenuToggle = (index) => {
     setOpenSubmenu(openSubmenu === index ? null : index);
+    setOpenNestedSubmenu(null); // Close nested submenu when main submenu changes
   };
 
-  const renderSubmenu = (options) => {
+  const handleNestedSubmenuToggle = (index, event) => {
+    event.stopPropagation();
+    setOpenNestedSubmenu(openNestedSubmenu === index ? null : index);
+  };
+
+  const renderSubmenu = (options, parentIndex) => {
     if (!options || options.length === 0) return null;
 
     return (
       <div className="absolute left-0 mt-2 w-64 bg-primary-600 rounded-md shadow-lg z-50">
         {options.map((option, index) => (
-          <div key={index} className="relative group">
+          <div key={index} className="relative">
             {option.subMenu ? (
               <div className="relative">
-                <div className="px-4 py-3 text-white hover:bg-orange-500 cursor-pointer flex items-center justify-between">
+                <div 
+                  onClick={(e) => handleNestedSubmenuToggle(`${parentIndex}-${index}`, e)}
+                  className="px-4 py-3 text-white hover:bg-orange-500 cursor-pointer flex items-center justify-between"
+                >
                   <span>{option.name}</span>
-                  <ChevronDown className="w-4 h-4 ml-2" />
+                  <ChevronDown className={`w-4 h-4 ml-2 transform transition-transform ${
+                    openNestedSubmenu === `${parentIndex}-${index}` ? 'rotate-180' : ''
+                  }`} />
                 </div>
-                {option.subMenuOptions && (
-                  <div className="absolute left-full top-0 w-64 bg-primary-600 rounded-md shadow-lg opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200">
+                {option.subMenuOptions && openNestedSubmenu === `${parentIndex}-${index}` && (
+                  <div className="ml-4 mt-2 bg-primary-700 rounded-md shadow-lg">
                     {option.subMenuOptions.map((subOption, subIndex) => (
                       <div key={subIndex}>
                         {subOption.target === '_blank' ? (
@@ -109,7 +121,7 @@ const PrimaryAppBar = () => {
                       </button>
                       {/* Dropdown Menu */}
                       <div className="absolute top-full left-0 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200">
-                        {renderSubmenu(item.options)}
+                        {renderSubmenu(item.options, index)}
                       </div>
                     </>
                   ) : (

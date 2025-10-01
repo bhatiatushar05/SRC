@@ -5,74 +5,58 @@ const menuList = [
   {
     name: "About SRC",
     link: "/about/src",
-    choice: false,
-    target: "",
-  },
-  {
-    name: "Council",
-    link: "",
     choice: true,
     target: "",
     options: [
       {
-        name: "Advisory Board",
-        redirect: "/advisory/",
+        name: "Council",
+        redirect: "#",
         target: "",
-        subMenu: false,
-      },
-      {
-        name: "Team",
-        redirect: "/team/",
-        target: "",
-        subMenu: false,
+        subMenu: true,
+        subMenuOptions: [
+          {
+            name: "Advisory Board",
+            redirect: "/advisory/",
+          },
+          {
+            name: "Team",
+            redirect: "/team/",
+          },
+        ]
       },
       {
         name: "Capabilities",
-        link: "/capabilities/",
-        subMenu: true,
+        redirect: "#",
         target: "",
+        subMenu: true,
         subMenuOptions: [
           {
             name: "Research",
-            subMenu: false,
             redirect: "/capabilities/research/",
-            target: "",
           },
           {
             name: "Consulting/Advisory",
-            subMenu: false,
             redirect: "/capabilities/consulting_and_advisory/",
-            target: "",
           },
           {
             name: "Environment,Social & Governance",
-            subMenu: false,
             redirect: "/capabilities/esg/",
-            target: "",
           },
           {
             name: "Intellectual Support",
-            subMenu: false,
             redirect: "/capabilities/intellectual_support/",
-            target: "",
           },
           {
             name: "Media Advocacy",
-            subMenu: false,
             redirect: "/capabilities/media_advocacy/",
-            target: "",
           },
           {
             name: "Digital Documentation",
-            subMenu: false,
             redirect: "/capabilities/digital_documentation/",
-            target: "",
           },
           {
             name: "Documentry",
-            subMenu: false,
             redirect: "/capabilities/documentry/",
-            target: "",
           },
         ]
       },
@@ -86,69 +70,15 @@ const menuList = [
     options: [
       {
         name: "Projects",
-        target: "",
         redirect: "/csr/projects/",
+        target: "",
+        subMenu: false,
       },
       {
         name: "Ventures",
         redirect: "/ventures/",
         target: "",
-        choice: false,
-        subMenuOptions: [
-          {
-            name: "Mahindra",
-            redirect: "/static/pdf/Mahindra_Coffee_Table_Book.pdf",
-            target: "_blank",
-            subMenu: true,
-          },
-          {
-            name: "Ministry Of Agriculture",
-            redirect: "#",
-            subMenu: true,
-            subMenuOptions: [
-              {
-                name: "Agri Mechanization",
-                redirect: "/static/pdf/Agri_Mech.pdf",
-                target: "_blank"
-              },
-              {
-                name: "Plant Protection",
-                redirect: "",
-                target: "_blank"
-              },
-            ]
-          },
-          {
-            name: "Khadi",
-            target: "_blank",
-            redirect: "/static/pdf/Khadi_for_Make_in_India.pdf",
-            subMenu: false,
-          },
-          {
-            name: "NDMC",
-            redirect: "/static/pdf/NDMC.pdf",
-            target: "_blank",
-            subMenu: false,
-          },
-          {
-            name: "RPF",
-            redirect: "/static/pdf/RPF.pdf",
-            target: "_blank",
-            subMenu: false,
-          },
-          {
-            name: "Lakshdweep",
-            redirect: "/static/pdf/Lakshdweep.pdf",
-            target: "_blank",
-            subMenu: false,
-          },
-          {
-            name: "Delhi Police",
-            redirect: "/static/pdf/Delhi_Police.pdf",
-            target: "_blank",
-            subMenu: false,
-          },
-        ]
+        subMenu: false,
       },
     ]
   },
@@ -160,8 +90,9 @@ const menuList = [
     options: [
       {
         name: "Organizational Structure",
+        redirect: "/static/pdf/organization-structure.pdf",
         target: "_blank",
-        redirect: "/static/pdf/organization-structure.pdf"
+        subMenu: false,
       },
     ]
   },
