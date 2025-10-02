@@ -75,6 +75,18 @@ const menuList = [
         subMenu: false,
       },
       {
+        name: "Login",
+        redirect: "/login/",
+        target: "",
+        subMenu: false,
+      },
+      {
+        name: "Gallery",
+        redirect: "/gallery/",
+        target: "",
+        subMenu: false,
+      },
+      {
         name: "Ventures",
         redirect: "/ventures/",
         target: "",

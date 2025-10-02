@@ -14,7 +14,7 @@ const MasterFooter = () => {
   ];
 
   const mediaLinks = [
-    { name: 'Photo Gallery', href: '#' },
+    { name: 'Photo Gallery', href: '/gallery' },
     { name: 'Video Gallery', href: '#' },
     { name: 'Press Releases', href: '#' },
     { name: 'Newsletter', href: '#' },

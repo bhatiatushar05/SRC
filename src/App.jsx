@@ -22,7 +22,7 @@ import MediaAdvocacy from './pages/capabilities/MediaAdvocacy';
 import DigitalDocumentation from './pages/capabilities/DigitalDocumentation';
 import Documentry from './pages/capabilities/Documentry';
 import CsrProjects from './pages/csr/Projects';
-import Ventures from './pages/ventures/Index';
+import Ventures from './pages/Ventures';
 import VentureDetail from './pages/ventures/VentureDetail';
 import Events from './pages/events/Index';
 import EventDetail from './pages/events/EventDetail';
@@ -34,6 +34,8 @@ import Pledge from './pages/pledge/Index';
 import PledgeDetail from './pages/pledge/PledgeDetail';
 import Founder from './pages/founder/Index';
 import Supporters from './pages/Supporters';
+import Gallery from './pages/Gallery';
+import Login from './pages/Login';
 import Tenders from './pages/Tenders';
 import ConceptNote from './pages/ConceptNote';
 import Demo from './pages/Demo';
@@ -91,6 +93,8 @@ function App() {
                 <Route path="/pledge/:id" element={<PledgeDetail />} />
                 <Route path="/founder" element={<Founder />} />
                 <Route path="/supporters" element={<Supporters />} />
+                <Route path="/gallery" element={<Gallery />} />
+                <Route path="/login" element={<Login />} />
                 <Route path="/tenders" element={<Tenders />} />
                 <Route path="/concept-note" element={<ConceptNote />} />
                 <Route path="/demo" element={<Demo />} />

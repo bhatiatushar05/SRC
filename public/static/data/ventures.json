@@ -1,0 +1,65 @@
+[
+  {
+    "id": 1,
+    "name": "MAHINDRA",
+    "logo": "/static/ventures/am.png",
+    "status": "PROCEED",
+    "description": "The research book objectifies the need of farm mechanisation to the small and marginal farmers and helping to build an Atmanirbhar Bharat."
+  },
+  {
+    "id": 2,
+    "name": "AGRI MECHANIZATION",
+    "logo": "/static/ventures/am.png",
+    "status": "PROCEED",
+    "description": "This Research Book on 'Agri-Mechanization for Make in India' is an exercise undertaken by Social Responsibility Council towards national well-being and development."
+  },
+  {
+    "id": 3,
+    "name": "PLANT PROTECTION",
+    "logo": "/static/ventures/am.png",
+    "status": "PROCEED",
+    "description": "Plant Protection is the practice of weather, weeds, pests and diseases that damage or inhibit the growth of fruit, vegetable and other horticulture crops."
+  },
+  {
+    "id": 4,
+    "name": "KHADI",
+    "logo": "/static/ventures/Khadi-And-Village-Industries-Commission.jpg",
+    "status": "PROCEED",
+    "description": "Today, the production of Khadi is by far the largest rural productivity programme in the world and this research book gives endless details about Khadi and its significance."
+  },
+  {
+    "id": 5,
+    "name": "NDMC",
+    "logo": "/static/ventures/new-delhi-municipal-council-ndmc-logo-vector.png",
+    "status": "PROCEED",
+    "description": "The Research book documents down the successful endeavours initiated by New Delhi Municipal Corporation to bring a transformation in Delhi."
+  },
+  {
+    "id": 6,
+    "name": "RPF",
+    "logo": "/static/ventures/Railway_Protection_Force_Logo.png",
+    "status": "PROCEED",
+    "description": "The Research book presents the initiation and working process of RPF and their importance in better protection and security of railway property as passenger safety."
+  },
+  {
+    "id": 7,
+    "name": "LAKSHADWEEP",
+    "logo": "/static/ventures/lakshadweep.jpg",
+    "status": "PROCEED",
+    "description": "The Lakshadweep Research book has laid a special emphasis on the group of islands, their exciting journeys and heavenly experience over there."
+  },
+  {
+    "id": 8,
+    "name": "DELHI POLICE",
+    "logo": "/static/ventures/Delhi-Police-logo-png.png",
+    "status": "PROCEED",
+    "description": "With Delhi's history, indubitably, the evolution of India as a nation has been intricately intertwined. This research book will take you from heritage to Cyber-age of Delhi Police."
+  },
+  {
+    "id": 9,
+    "name": "NSTFDC",
+    "logo": "/static/ventures/nsfdc.png",
+    "status": "PROCEED",
+    "description": "Currently undertaking CSR educational initiatives for EMRS schools"
+  }
+]
