@@ -14,7 +14,7 @@ const PrimaryAppBar = () => {
   
   const handleSubmenuToggle = (index) => {
     setOpenSubmenu(openSubmenu === index ? null : index);
-    setOpenNestedSubmenu(null); // Close nested submenu when main submenu changes
+    setOpenNestedSubmenu(null);
   };
 
   const handleNestedSubmenuToggle = (index, event) => {
@@ -26,22 +26,22 @@ const PrimaryAppBar = () => {
     if (!options || options.length === 0) return null;
 
     return (
-      <div className="absolute left-0 mt-2 w-64 bg-primary-600 rounded-md shadow-lg z-50">
+      <div className="absolute left-0 mt-2 w-64 bg-white border border-gray-200 rounded-lg shadow-xl z-50">
         {options.map((option, index) => (
           <div key={index} className="relative">
             {option.subMenu ? (
               <div className="relative">
                 <div 
                   onClick={(e) => handleNestedSubmenuToggle(`${parentIndex}-${index}`, e)}
-                  className="px-4 py-3 text-white hover:bg-orange-500 cursor-pointer flex items-center justify-between"
+                  className="px-6 py-4 text-gray-700 hover:bg-gray-50 cursor-pointer flex items-center justify-between border-b border-gray-100"
                 >
-                  <span>{option.name}</span>
-                  <ChevronDown className={`w-4 h-4 ml-2 transform transition-transform ${
+                  <span className="font-semibold text-base">{option.name}</span>
+                  <ChevronDown className={`w-5 h-5 text-gray-400 transform transition-transform ${
                     openNestedSubmenu === `${parentIndex}-${index}` ? 'rotate-180' : ''
                   }`} />
                 </div>
                 {option.subMenuOptions && openNestedSubmenu === `${parentIndex}-${index}` && (
-                  <div className="ml-4 mt-2 bg-primary-700 rounded-md shadow-lg">
+                  <div className="bg-gray-50 border-l-4 border-primary-600">
                     {option.subMenuOptions.map((subOption, subIndex) => (
                       <div key={subIndex}>
                         {subOption.target === '_blank' ? (
@@ -49,14 +49,14 @@ const PrimaryAppBar = () => {
                             href={subOption.redirect}
                             target="_blank"
                             rel="noopener noreferrer"
-                            className="block px-4 py-3 text-white hover:bg-orange-500 transition-colors"
+                            className="block px-8 py-3 text-sm text-gray-600 hover:text-primary-600 hover:bg-white transition-colors font-medium"
                           >
                             {subOption.name}
                           </a>
                         ) : (
                           <Link
                             to={subOption.redirect}
-                            className="block px-4 py-3 text-white hover:bg-orange-500 transition-colors"
+                            className="block px-8 py-3 text-sm text-gray-600 hover:text-primary-600 hover:bg-white transition-colors font-medium"
                           >
                             {subOption.name}
                           </Link>
@@ -73,14 +73,14 @@ const PrimaryAppBar = () => {
                     href={option.redirect}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="block px-4 py-3 text-white hover:bg-orange-500 transition-colors"
+                    className="block px-6 py-4 text-base text-gray-700 hover:text-primary-600 hover:bg-gray-50 transition-colors border-b border-gray-100 last:border-b-0 font-medium"
                   >
                     {option.name}
                   </a>
                 ) : (
                   <Link
                     to={option.redirect}
-                    className="block px-4 py-3 text-white hover:bg-orange-500 transition-colors"
+                    className="block px-6 py-4 text-base text-gray-700 hover:text-primary-600 hover:bg-gray-50 transition-colors border-b border-gray-100 last:border-b-0 font-medium"
                   >
                     {option.name}
                   </Link>
@@ -95,32 +95,32 @@ const PrimaryAppBar = () => {
 
   return (
     <>
-      {/* Desktop Navigation - EXACTLY like original */}
-      <nav className="bg-primary-600 shadow-lg fixed w-full z-40 h-20 hidden md:block">
-        <div className="max-w-full mx-0 px-4">
-          <div className="flex justify-between items-center h-20">
+      {/* Desktop Navigation */}
+      <nav className="bg-primary-600 shadow-sm fixed w-full z-40 h-16 hidden md:block">
+        <div className="max-w-full mx-auto px-4">
+          <div className="flex justify-between items-center h-16">
             {/* Logo */}
             <div className="flex-shrink-0">
               <Link to="/" className="cursor-pointer">
                 <img
                   src="/static/src.png"
                   alt="SRC Logo"
-                  className="h-20 w-70 object-contain"
+                  className="h-12 w-auto object-contain"
                 />
               </Link>
             </div>
 
             {/* Desktop Menu */}
-            <div className="hidden md:flex items-center space-x-1">
+            <div className="hidden md:flex items-center space-x-3">
               {menuList.map((item, index) => (
                 <div key={index} className="relative group">
                   {item.choice ? (
                     <>
-                      <button className="text-white font-semibold text-sm capitalize px-3 py-2 hover:bg-primary-700 transition-colors rounded">
+                      <button className="text-white font-medium text-sm px-3 py-2 hover:text-gray-200 transition-colors duration-200">
                         {item.name}
                       </button>
                       {/* Dropdown Menu */}
-                      <div className="absolute top-full left-0 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200">
+                      <div className="absolute top-full left-0 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 delay-100">
                         {renderSubmenu(item.options, index)}
                       </div>
                     </>
@@ -131,14 +131,14 @@ const PrimaryAppBar = () => {
                           href={item.link}
                           target="_blank"
                           rel="noopener noreferrer"
-                          className="text-white font-semibold text-sm capitalize px-3 py-2 hover:bg-primary-700 transition-colors rounded"
+                          className="text-white font-medium text-sm px-3 py-2 hover:text-gray-200 transition-colors duration-200"
                         >
                           {item.name}
                         </a>
                       ) : (
                         <Link
                           to={item.link}
-                          className="text-white font-semibold text-sm capitalize px-3 py-2 hover:bg-primary-700 transition-colors rounded"
+                          className="text-white font-medium text-sm px-3 py-2 hover:text-gray-200 transition-colors duration-200"
                         >
                           {item.name}
                         </Link>
@@ -153,13 +153,13 @@ const PrimaryAppBar = () => {
       </nav>
 
       {/* Mobile Navigation */}
-      <nav className="bg-primary-600 shadow-lg fixed w-full z-40 h-20 md:hidden">
+      <nav className="bg-primary-600 shadow-sm fixed w-full z-40 h-16 md:hidden">
         <div className="max-w-full mx-0 px-4">
-          <div className="flex justify-between items-center h-20">
+          <div className="flex justify-between items-center h-16">
             {/* Mobile Menu Button */}
             <button
               onClick={toggleMenu}
-              className="text-white hover:text-gray-200 focus:outline-none"
+              className="text-white hover:text-gray-200 focus:outline-none p-2"
             >
               {isOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
             </button>
@@ -170,7 +170,7 @@ const PrimaryAppBar = () => {
                 <img
                   src="/static/src.png"
                   alt="SRC Logo"
-                  className="h-20 w-70 object-contain"
+                  className="h-12 w-auto object-contain"
                 />
               </Link>
             </div>
@@ -186,11 +186,11 @@ const PrimaryAppBar = () => {
                 <img
                   src="/static/src.png"
                   alt="SRC Logo"
-                  className="h-12 w-auto object-contain"
+                  className="h-10 w-auto object-contain"
                 />
                 <button
                   onClick={toggleMenu}
-                  className="text-white hover:text-gray-200"
+                  className="text-white hover:text-gray-200 p-2"
                 >
                   <X className="w-6 h-6" />
                 </button>
@@ -199,28 +199,28 @@ const PrimaryAppBar = () => {
               {/* Mobile Menu Items */}
               <div className="flex-1 overflow-y-auto px-4 py-6">
                 {menuList.map((item, index) => (
-                  <div key={index} className="mb-4">
+                  <div key={index} className="mb-6">
                     {item.choice ? (
                       <>
                         <button
                           onClick={() => handleSubmenuToggle(index)}
-                          className="w-full text-left text-textColor font-semibold py-3 flex items-center justify-between border-b border-gray-200"
+                          className="w-full text-left text-gray-800 font-semibold py-4 flex items-center justify-between border-b border-gray-200 text-lg"
                         >
                           {item.name}
                           <ChevronDown
-                            className={`w-4 h-4 transform transition-transform ${
+                            className={`w-5 h-5 text-gray-500 transform transition-transform ${
                               openSubmenu === index ? 'rotate-180' : ''
                             }`}
                           />
                         </button>
                         {openSubmenu === index && item.options && (
-                          <div className="ml-4 mt-2 space-y-2">
+                          <div className="ml-6 mt-4 space-y-4">
                             {item.options.map((option, optionIndex) => (
                               <div key={optionIndex}>
                                 {option.subMenu && option.subMenuOptions ? (
                                   <div>
-                                    <div className="text-textColor py-2 font-medium">{option.name}</div>
-                                    <div className="ml-4 space-y-1">
+                                    <div className="text-gray-700 py-3 font-semibold text-base">{option.name}</div>
+                                    <div className="ml-6 space-y-3">
                                       {option.subMenuOptions.map((subOption, subIndex) => (
                                         <div key={subIndex}>
                                           {subOption.target === '_blank' ? (
@@ -228,7 +228,7 @@ const PrimaryAppBar = () => {
                                               href={subOption.redirect}
                                               target="_blank"
                                               rel="noopener noreferrer"
-                                              className="block text-gray-600 py-1 hover:text-primary-600 text-sm"
+                                              className="block text-gray-600 py-2 hover:text-primary-600 text-base transition-colors font-medium"
                                               onClick={toggleMenu}
                                             >
                                               {subOption.name}
@@ -236,7 +236,7 @@ const PrimaryAppBar = () => {
                                           ) : (
                                             <Link
                                               to={subOption.redirect}
-                                              className="block text-gray-600 py-1 hover:text-primary-600 text-sm"
+                                              className="block text-gray-600 py-2 hover:text-primary-600 text-base transition-colors font-medium"
                                               onClick={toggleMenu}
                                             >
                                               {subOption.name}
@@ -253,7 +253,7 @@ const PrimaryAppBar = () => {
                                         href={option.redirect}
                                         target="_blank"
                                         rel="noopener noreferrer"
-                                        className="block text-textColor py-2 hover:text-primary-600"
+                                        className="block text-gray-700 py-3 hover:text-primary-600 transition-colors text-base font-medium"
                                         onClick={toggleMenu}
                                       >
                                         {option.name}
@@ -261,7 +261,7 @@ const PrimaryAppBar = () => {
                                     ) : (
                                       <Link
                                         to={option.redirect}
-                                        className="block text-textColor py-2 hover:text-primary-600"
+                                        className="block text-gray-700 py-3 hover:text-primary-600 transition-colors text-base font-medium"
                                         onClick={toggleMenu}
                                       >
                                         {option.name}
@@ -281,7 +281,7 @@ const PrimaryAppBar = () => {
                             href={item.link}
                             target="_blank"
                             rel="noopener noreferrer"
-                            className="block text-textColor font-semibold py-3 border-b border-gray-200"
+                            className="block text-gray-800 font-semibold py-4 border-b border-gray-200 hover:text-primary-600 transition-colors text-lg"
                             onClick={toggleMenu}
                           >
                             {item.name}
@@ -289,7 +289,7 @@ const PrimaryAppBar = () => {
                         ) : (
                           <Link
                             to={item.link}
-                            className="block text-textColor font-semibold py-3 border-b border-gray-200"
+                            className="block text-gray-800 font-semibold py-4 border-b border-gray-200 hover:text-primary-600 transition-colors text-lg"
                             onClick={toggleMenu}
                           >
                             {item.name}
@@ -306,7 +306,7 @@ const PrimaryAppBar = () => {
       </nav>
 
       {/* Spacer for fixed navbar */}
-      <div className="h-20"></div>
+      <div className="h-16"></div>
     </>
   );
 };

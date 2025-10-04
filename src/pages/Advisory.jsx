@@ -88,20 +88,20 @@ const Advisory = () => {
   return (
     <div className="min-h-screen bg-gray-50">
       {/* Header */}
-      <div className="bg-white py-16">
-        <div className="max-w-6xl mx-auto px-6">
-          <h1 className="text-5xl font-bold text-textColor text-center mb-16">Advisory</h1>
+      <div className="bg-white py-12">
+        <div className="max-w-5xl mx-auto px-6">
+          <h1 className="text-4xl font-bold text-textColor text-center mb-8">Advisory</h1>
           
           {/* Category Tabs */}
-          <div className="flex flex-wrap justify-center gap-2 mb-16">
+          <div className="flex flex-wrap justify-center gap-3 mb-8">
             {categories.map((category) => (
               <button
                 key={category}
                 onClick={() => setActiveCategory(category)}
-                className={`px-6 py-3 font-medium text-sm transition-all duration-200 ${
+                className={`px-6 py-2 font-semibold text-sm uppercase tracking-wide transition-all duration-200 ${
                   activeCategory === category
-                    ? 'bg-textColor text-white border-b-2 border-textColor'
-                    : 'text-gray-600 hover:text-textColor border-b-2 border-transparent hover:border-textColor'
+                    ? 'text-textColor border-b-4 border-textColor'
+                    : 'text-gray-400 hover:text-textColor border-b-4 border-transparent hover:border-gray-300'
                 }`}
               >
                 {category}
@@ -112,17 +112,17 @@ const Advisory = () => {
       </div>
 
       {/* Advisory Members Grid */}
-      <div className="bg-gray-50 py-16">
-        <div className="max-w-6xl mx-auto px-6">
+      <div className="bg-gray-50 py-8">
+        <div className="max-w-5xl mx-auto px-6">
           {currentMembers.length > 0 ? (
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-3">
               {currentMembers.map((member) => (
                 <div key={member.id} className="bg-white rounded-lg shadow-md overflow-hidden hover:shadow-lg transition-shadow">
                   <div className="relative">
                     <img
                       src={member.image}
                       alt={member.name}
-                      className="w-full h-80 object-cover"
+                      className="w-full h-64 object-cover"
                       onError={(e) => {
                         e.target.src = '/static/placeholder.png';
                       }}
@@ -135,8 +135,8 @@ const Advisory = () => {
                       </div>
                     )}
                   </div>
-                  <div className="p-6 text-center">
-                    <h3 className="text-xl font-bold text-textColor mb-2">
+                  <div className="p-3 text-center">
+                    <h3 className="text-base font-semibold text-textColor mb-1">
                       {member.name}
                     </h3>
                     {member.position && (

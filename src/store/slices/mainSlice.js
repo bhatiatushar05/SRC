@@ -70,21 +70,19 @@ const menuList = [
     options: [
       {
         name: "Projects",
-        redirect: "/csr/projects/",
+        redirect: "#",
         target: "",
-        subMenu: false,
-      },
-      {
-        name: "Login",
-        redirect: "/login/",
-        target: "",
-        subMenu: false,
-      },
-      {
-        name: "Gallery",
-        redirect: "/gallery/",
-        target: "",
-        subMenu: false,
+        subMenu: true,
+        subMenuOptions: [
+          {
+            name: "Login",
+            redirect: "/login/",
+          },
+          {
+            name: "Gallery",
+            redirect: "/gallery/",
+          },
+        ]
       },
       {
         name: "Ventures",
