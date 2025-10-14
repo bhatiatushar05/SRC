@@ -1,8 +1,42 @@
+import { useEffect } from 'react';
+
 const ConsultingAdvisory = () => {
+  useEffect(() => {
+    document.title = 'Consulting / Advisory - Social Responsibility Council';
+  }, []);
+
   return (
-    <div className="container mx-auto px-4 py-8">
-      <h1 className="text-4xl font-bold text-textColor mb-6">Consulting & Advisory</h1>
-      <p className="text-lg text-gray-700">Our consulting and advisory services...</p>
+    <div className="min-h-screen">
+      {/* Hero Section with Hands Background */}
+      <div 
+        className="relative min-h-screen flex items-center justify-center"
+        style={{
+          backgroundImage: 'url(/static/cap/ca.jpg)',
+          backgroundSize: 'cover',
+          backgroundPosition: 'center',
+          backgroundRepeat: 'no-repeat'
+        }}
+      >
+        {/* Overlay */}
+        <div className="absolute inset-0 bg-black bg-opacity-40"></div>
+        
+        {/* Content */}
+        <div className="relative z-10 max-w-4xl mx-auto px-4 text-center">
+          <div className="bg-white bg-opacity-95 rounded-lg p-8 shadow-2xl">
+            <h1 className="text-4xl md:text-5xl font-bold mb-6" style={{ color: '#14b8a6' }}>
+              Consulting / Advisory
+            </h1>
+            <div className="text-gray-700 text-lg leading-relaxed">
+              <p className="mb-4">
+                CSR of various Corporates need direction. They have an honest desire to deal with challenges that concern people. Our customized and qualified consultations cover a wide range of subjects - social in a broader sense including education, and national including environment and health.
+              </p>
+              <p>
+                Sustainability is our focus. We have a holistic vision, and are observant of the fact that action of today shouldn't cost humanity in the future.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
   );
 };
