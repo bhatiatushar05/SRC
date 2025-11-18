@@ -11,18 +11,18 @@ const Tenders = () => {
   return (
     <div className="min-h-screen">
       <TendersHero />
+      <TendersStats stats={state.stats} />
       <TendersTable
         loading={state.loading}
-        filter={state.filter}
-        setFilter={state.setFilter}
-        searchQuery={state.searchQuery}
-        setSearchQuery={state.setSearchQuery}
-        filteredTenders={state.filteredTenders}
+        error={state.error}
+        tenders={state.tenders}
         getStatusColor={state.getStatusColor}
         getBadgeStyle={state.getBadgeStyle}
         getDaysUntilEnd={state.getDaysUntilEnd}
         formatDate={state.formatDate}
         canDownload={state.canDownload}
+        refetch={state.refetch}
+        isSupabaseConfigured={state.isSupabaseConfigured}
       />
     </div>
   );

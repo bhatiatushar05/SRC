@@ -2,7 +2,8 @@
 export const TenderStatus = {
     LIVE: 'live now',
     UPCOMING: 'upcoming',
-    CLOSED: 'closed'
+    CLOSED: 'closed',
+    CANCELLED: 'cancelled'
 };
 
 // Field keys used throughout UI and services

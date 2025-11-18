@@ -1,18 +1,17 @@
 import React from "react";
-import { Download, FileText, Search, Calendar, Clock } from "lucide-react";
+import { Download, FileText, Calendar, Clock, RefreshCw } from "lucide-react";
 
 const TendersTable = ({
   loading,
-  filter,
-  setFilter,
-  searchQuery,
-  setSearchQuery,
-  filteredTenders,
+  error,
+  tenders,
   getStatusColor,
   getBadgeStyle,
   getDaysUntilEnd,
   formatDate,
   canDownload,
+  refetch,
+  isSupabaseConfigured,
 }) => {
   return (
     <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
@@ -27,15 +26,24 @@ const TendersTable = ({
           <div className="flex items-center justify-center py-20">
             <div className="animate-spin rounded-full h-12 w-12 border-4 border-indigo-200 border-t-indigo-600"></div>
           </div>
-        ) : filteredTenders.length === 0 ? (
+        ) : tenders.length === 0 ? (
           <div className="p-16 text-center">
             <FileText className="w-16 h-16 text-gray-300 mx-auto mb-4" />
             <h3 className="text-lg font-semibold text-gray-900 mb-2">
               No Tenders Found
             </h3>
             <p className="text-gray-600">
-              Try adjusting your filters or search query.
+              There are no tenders available at the moment.
             </p>
+            {error && refetch && (
+              <button
+                onClick={refetch}
+                className="inline-flex items-center gap-2 px-4 py-2 bg-indigo-600 text-white rounded-lg hover:bg-indigo-700 transition-colors mt-4"
+              >
+                <RefreshCw className="w-4 h-4" />
+                Refresh
+              </button>
+            )}
           </div>
         ) : (
           <div className="overflow-x-auto">
@@ -63,7 +71,7 @@ const TendersTable = ({
                 </tr>
               </thead>
               <tbody className="bg-white divide-y divide-gray-200">
-                {filteredTenders.map((tender, index) => (
+                {tenders.map((tender, index) => (
                   <tr
                     key={tender.id}
                     className="hover:bg-indigo-50/50 transition-colors group"
@@ -159,11 +167,20 @@ const TendersTable = ({
                           </button>
                           <div className="absolute bottom-full right-0 mb-2 hidden group-hover/tooltip:block z-10">
                             <div className="bg-gray-900 text-white text-xs rounded-lg py-2 px-3 whitespace-nowrap">
-                              {tender.status.toLowerCase() === "upcoming"
-                                ? `Available from ${formatDate(
+                              {(() => {
+                                const status = tender.status.toLowerCase();
+                                if (status === "upcoming") {
+                                  return `Available from ${formatDate(
                                     tender.startingDate
-                                  )}`
-                                : `Closed on ${formatDate(tender.endingDate)}`}
+                                  )}`;
+                                } else if (
+                                  status === "closed" ||
+                                  status === "cancelled"
+                                ) {
+                                  return `Not available - ${tender.status}`;
+                                }
+                                return `Not available for download`;
+                              })()}
                             </div>
                           </div>
                         </div>

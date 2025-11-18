@@ -9,6 +9,7 @@ export { StorageService } from './storage.js'
 export { MembersService } from './members.js'
 export { TeamService } from './team.js'
 export { EventsService } from './events.js'
+export { TendersService, tendersService } from './tenders.js'
 
 // Form services
 export { FormsService } from './forms.js'
