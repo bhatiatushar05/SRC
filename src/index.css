@@ -17,7 +17,12 @@
     color: #111827;
   }
 
-  h1, h2, h3, h4, h5, h6 {
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
     font-weight: 600;
   }
 }
@@ -30,11 +35,11 @@
     border-radius: 0.375rem;
     transition: background-color 0.2s;
   }
-  
+
   .btn-primary:hover {
     background-color: #1e40af;
   }
-  
+
   .btn-secondary {
     background-color: #2C498D;
     color: white;
@@ -42,9 +47,176 @@
     border-radius: 0.375rem;
     transition: background-color 0.2s;
   }
-  
+
   .btn-secondary:hover {
     background-color: #1e40af;
+  }
+
+  /* Submenu components */
+  .submenu-panel {
+    @apply absolute left-0 supports-[backdrop-filter]:bg-primary-600/80 z-50 min-w-48 w-max rounded-lg backdrop-blur ring-1 ring-black/5 shadow-lg p-3 pl-0;
+    animation: dropdownSlideIn 0.3s ease-out;
+  }
+
+  @keyframes dropdownSlideIn {
+    from {
+      opacity: 0;
+      transform: translateY(-10px) scale(0.95);
+    }
+
+    to {
+      opacity: 1;
+      transform: translateY(0) scale(1);
+    }
+  }
+
+  .submenu-trigger {
+    @apply relative pl-5 pr-2 py-3 font-medium text-sm text-white hover:bg-primary-500/20 cursor-pointer flex items-center justify-between rounded-md transition-all duration-200;
+  }
+
+  .submenu-trigger::before {
+    content: '';
+    @apply absolute left-0 top-0 bottom-0 w-1 bg-amber-500 rounded-r-full transform scale-y-0 origin-center transition-transform duration-200 ease-out;
+  }
+
+  .submenu-trigger:hover::before {
+    @apply scale-y-100;
+  }
+
+  .submenu-nested {
+    @apply mt-1 rounded-lg ring-1 ring-black/5 overflow-hidden ml-3;
+    animation: slideDown 0.2s ease-out;
+    background-color: rgba(113, 139, 166, 0.255);
+  }
+
+  @keyframes slideDown {
+    from {
+      opacity: 0;
+      transform: translateY(-8px);
+      max-height: 0;
+    }
+
+    to {
+      opacity: 1;
+      transform: translateY(0);
+      max-height: 500px;
+    }
+  }
+
+  .submenu-item {
+    @apply relative block pl-5 pr-2 text-sm py-3 text-white hover:bg-primary-50/20 rounded-md transition-colors duration-200;
+    font-weight: 400;
+  }
+
+  .submenu-item::before {
+    content: '';
+    @apply absolute left-0 top-0 bottom-0 w-1 bg-amber-500 rounded-r-full transform scale-y-0 origin-center transition-transform duration-200 ease-out;
+  }
+
+  .submenu-item:hover::before {
+    @apply scale-y-100;
+  }
+
+  .menu-trigger {
+    @apply text-white/95 hover:text-white font-medium text-sm px-3 py-2 inline-flex items-center gap-1.5 transition-all duration-200 focus:outline-none focus-visible:ring-2 focus-visible:ring-white/60 rounded-md;
+  }
+
+  .menu-trigger .chevron-icon {
+    @apply transform transition-transform duration-200;
+  }
+
+  .group:hover .menu-trigger .chevron-icon {
+    @apply rotate-180;
+  }
+
+  .dropdown-anim {
+    @apply origin-top-left opacity-0 scale-95 -translate-y-2 invisible group-hover:opacity-100 group-hover:scale-100 group-hover:translate-y-0 group-hover:visible transition-all duration-300 ease-out;
+  }
+
+  /* Typography utilities (global) */
+  .typo-display {
+    @apply text-4xl md:text-5xl font-bold tracking-tight text-gray-900;
+  }
+
+  .typo-h1 {
+    @apply text-3xl md:text-4xl font-semibold text-gray-900;
+  }
+
+  .typo-h2 {
+    @apply text-2xl md:text-3xl font-semibold text-gray-900;
+  }
+
+  .typo-h3 {
+    @apply text-xl md:text-2xl font-semibold text-gray-900;
+  }
+
+  .typo-subtitle {
+    @apply text-lg text-gray-700;
+  }
+
+  .typo-lead {
+    @apply text-lg md:text-xl text-gray-700;
+  }
+
+  .typo-body {
+    @apply text-base text-gray-800;
+  }
+
+  .typo-small {
+    @apply text-sm text-gray-700;
+  }
+
+  .typo-muted {
+    @apply text-sm text-gray-500;
+  }
+
+  .typo-caption {
+    @apply text-xs text-gray-500;
+  }
+
+  .typo-overline {
+    @apply uppercase tracking-widest text-xs text-gray-500;
+  }
+
+  .typo-link {
+    @apply text-primary-600 hover:text-primary-700 underline-offset-4 hover:underline;
+  }
+
+  .typo-button {
+    @apply text-sm font-medium;
+  }
+
+  .typo-code {
+    @apply font-mono text-sm;
+  }
+
+  .typo-invert {
+    @apply text-white/90;
+  }
+
+  /* App bar text classes (global) */
+  .appbar-text {
+    @apply text-white/95;
+  }
+
+  .appbar-text-muted {
+    @apply text-white/80;
+  }
+
+  .appbar-link {
+    @apply text-white/95 hover:text-white font-medium text-sm;
+  }
+
+  .appbar-link-muted {
+    @apply text-white/80 hover:text-white text-sm;
+  }
+
+  .appbar-link-lg {
+    @apply text-white/95 hover:text-white font-medium text-base;
+  }
+
+  .appbar-icon {
+    @apply text-white/90;
   }
 }
 
@@ -55,14 +227,14 @@
     -webkit-box-orient: vertical;
     -webkit-line-clamp: 1;
   }
-  
+
   .line-clamp-2 {
     overflow: hidden;
     display: -webkit-box;
     -webkit-box-orient: vertical;
     -webkit-line-clamp: 2;
   }
-  
+
   .line-clamp-3 {
     overflow: hidden;
     display: -webkit-box;

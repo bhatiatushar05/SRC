@@ -1,211 +1,548 @@
-import React, { useState } from 'react';
-import { ChevronLeft, ChevronRight, X } from 'lucide-react';
+import React, { useState, useMemo } from "react";
+import {
+  ChevronLeft,
+  ChevronRight,
+  ChevronDown,
+  ChevronUp,
+  X,
+  Eye,
+  Image as ImageIcon,
+  Video as VideoIcon,
+  Grid,
+  GraduationCap,
+  FlaskConical,
+  Play,
+  Youtube,
+  Loader2,
+} from "lucide-react";
 
 const Gallery = () => {
-  const [activeCategory, setActiveCategory] = useState('events');
-  const [selectedImage, setSelectedImage] = useState(null);
+  const [activeTab, setActiveTab] = useState(0);
+  const [hoveredItem, setHoveredItem] = useState(null);
+  const [mediaDialog, setMediaDialog] = useState(false);
+  const [selectedMedia, setSelectedMedia] = useState(null);
+  const [currentVideoIndex, setCurrentVideoIndex] = useState(0);
+  const [imagesPerPage] = useState(8);
+  const [currentPage, setCurrentPage] = useState(1);
+  const [showAllImages, setShowAllImages] = useState(false);
+  const [imageLoading, setImageLoading] = useState({});
 
   const categories = [
-    { id: 'events', name: 'Events', count: 19 },
-    { id: 'content', name: 'Content', count: 22 },
-    { id: 'team', name: 'Team', count: 56 },
-    { id: 'supporters', name: 'Supporters', count: 35 },
-    { id: 'letters', name: 'Letters', count: 39 },
-    { id: 'ventures', name: 'Ventures', count: 9 }
+    { id: "all", name: "All Projects", icon: Grid },
+    { id: "education", name: "Education Initiatives", icon: GraduationCap },
+    { id: "research", name: "Research & Development", icon: FlaskConical },
   ];
 
-  const galleryImages = {
-    events: [
-      { src: '/static/event2021/Aashish Beergi (Panelist).jpg', title: 'Aashish Beergi (Panelist)', category: 'SEE Summit 2021' },
-      { src: '/static/event2021/Dr. Anil Kumar (Moderator).jpg', title: 'Dr. Anil Kumar (Moderator)', category: 'SEE Summit 2021' },
-      { src: '/static/event2021/Dr. Rawail Singh.jpg', title: 'Dr. Rawail Singh', category: 'SEE Summit 2021' },
-      { src: '/static/event2021/Dr. S.K Dutta (Guest of Honour).jpg', title: 'Dr. S.K Dutta (Guest of Honour)', category: 'SEE Summit 2021' },
-      { src: '/static/event2021/Justice Swatanter Kumar (Keynote Speaker).jpg', title: 'Justice Swatanter Kumar (Keynote Speaker)', category: 'SEE Summit 2021' },
-      { src: '/static/event2021/Mama Natung (Guest of Honour).jpg', title: 'Mama Natung (Guest of Honour)', category: 'SEE Summit 2021' },
-      { src: '/static/event2021/Mr. Arun Khurana (Honorable Organizer).jpg', title: 'Mr. Arun Khurana (Honorable Organizer)', category: 'SEE Summit 2021' },
-      { src: '/static/event2021/Mr. Gaurav Chopra (Panelist).jpg', title: 'Mr. Gaurav Chopra (Panelist)', category: 'SEE Summit 2021' },
-      { src: '/static/event2021/Mr. Kishore Upadhyaya (Panelist).jpg', title: 'Mr. Kishore Upadhyaya (Panelist)', category: 'SEE Summit 2021' },
-      { src: '/static/event2021/Mr. Praveen Garg (Panelist).jpg', title: 'Mr. Praveen Garg (Panelist)', category: 'SEE Summit 2021' },
-      { src: '/static/event2021/Mr. Vivek Narayan Sharma (Moderator).jpg', title: 'Mr. Vivek Narayan Sharma (Moderator)', category: 'SEE Summit 2021' },
-      { src: '/static/event2021/Padma Shri Hans Raj Hans (Guest of Honour).jpg', title: 'Padma Shri Hans Raj Hans (Guest of Honour)', category: 'SEE Summit 2021' },
-      { src: '/static/event2021/Padma Shri Jadav Payeng (Panelist).jpg', title: 'Padma Shri Jadav Payeng (Panelist)', category: 'SEE Summit 2021' },
-      { src: '/static/event2021/Padma Shri Sant Baba Balbir Singh Seechewal (Panelist).jpg', title: 'Padma Shri Sant Baba Balbir Singh Seechewal (Panelist)', category: 'SEE Summit 2021' },
-      { src: '/static/event2021/Peepal Baba (Swami Prem Parivartan) (Panelist).jpg', title: 'Peepal Baba (Swami Prem Parivartan) (Panelist)', category: 'SEE Summit 2021' },
-      { src: '/static/event2021/Rajesh S IFS (Panelist).jpg', title: 'Rajesh S IFS (Panelist)', category: 'SEE Summit 2021' },
-      { src: '/static/event2021/Sardar R. P. Singh (Guest of Honour).jpg', title: 'Sardar R. P. Singh (Guest of Honour)', category: 'SEE Summit 2021' },
-      { src: '/static/event2021/Shri Tanmoy Chakrabarty (Panelist).jpg', title: 'Shri Tanmoy Chakrabarty (Panelist)', category: 'SEE Summit 2021' },
-      { src: '/static/event2021/Shri. Vinai Kumar Saxena (Guest of Honour).jpg', title: 'Shri. Vinai Kumar Saxena (Guest of Honour)', category: 'SEE Summit 2021' }
-    ],
-    content: [
-      { src: '/static/content/190716075155102_BW.jpg', title: 'Event Moment', category: 'Conference' },
-      { src: '/static/content/DSC_0166_BW.jpg', title: 'Conference Hall', category: 'Venue' },
-      { src: '/static/content/DSC_0399_BW.jpg', title: 'Audience Engagement', category: 'Event' },
-      { src: '/static/content/NSP_1232_BW.jpg', title: 'Panel Discussion', category: 'Conference' },
-      { src: '/static/index/1.jpg', title: 'SRC Activities', category: 'General' },
-      { src: '/static/index/2.jpg', title: 'Community Engagement', category: 'Social' },
-      { src: '/static/index/3.jpg', title: 'Environmental Initiative', category: 'Environment' },
-      { src: '/static/index/4.jpg', title: 'Sustainability Program', category: 'Sustainability' },
-      { src: '/static/index/master-splash.jpg', title: 'SRC Vision', category: 'About' },
-      { src: '/static/index/one-500.jpg', title: 'Leadership', category: 'Team' },
-      { src: '/static/index/PHOTO-2021-08-19-11-23-55.jpg', title: 'Team Meeting', category: 'Internal' },
-      { src: '/static/index/SRC_SEE_Summit_2021_3.jpg', title: 'SEE Summit 2021', category: 'Summit' }
-    ],
-    team: [
-      { src: '/static/team/Arun_Khurana_copy.jpg', title: 'Arun Khurana - Founder', category: 'Leadership' },
-      { src: '/static/team/SP_Sing_copy.jpg', title: 'S.P. Singh - Finance', category: 'Finance' },
-      { src: '/static/team/1.jpg', title: 'Team Member', category: 'Core Team' },
-      { src: '/static/team/2.jpg', title: 'Team Member', category: 'Core Team' },
-      { src: '/static/team/3.jpg', title: 'Team Member', category: 'Core Team' },
-      { src: '/static/team/4.jpg', title: 'Team Member', category: 'Core Team' },
-      { src: '/static/team/5.jpg', title: 'Team Member', category: 'Core Team' },
-      { src: '/static/team/7.jpg', title: 'Team Member', category: 'Core Team' },
-      { src: '/static/team/8.jpg', title: 'Team Member', category: 'Core Team' }
-    ],
-    supporters: [
-      { src: '/static/supporters/c1.jpg', title: 'Corporate Partner', category: 'Partnership' },
-      { src: '/static/supporters/c3.jpg', title: 'Industry Supporter', category: 'Industry' },
-      { src: '/static/supporters/c4.jpg', title: 'Business Alliance', category: 'Alliance' },
-      { src: '/static/supporters/c5.jpg', title: 'Strategic Partner', category: 'Strategy' },
-      { src: '/static/supporters/c6.jpg', title: 'Community Partner', category: 'Community' },
-      { src: '/static/supporters/c7.jpg', title: 'Technology Partner', category: 'Technology' },
-      { src: '/static/supporters/c8.jpg', title: 'Innovation Partner', category: 'Innovation' },
-      { src: '/static/supporters/c9.jpg', title: 'Development Partner', category: 'Development' },
-      { src: '/static/supporters/c10.jpg', title: 'Growth Partner', category: 'Growth' }
-    ],
-    letters: [
-      { src: '/static/letters/appreciation/0.jpg', title: 'Appreciation Letter', category: 'Recognition' },
-      { src: '/static/letters/appreciation/1.jpg', title: 'Thank You Letter', category: 'Gratitude' },
-      { src: '/static/letters/appreciation/2.jpg', title: 'Achievement Recognition', category: 'Achievement' },
-      { src: '/static/letters/partner/0.jpg', title: 'Partnership Agreement', category: 'Partnership' },
-      { src: '/static/letters/partner/1.jpg', title: 'Collaboration Letter', category: 'Collaboration' },
-      { src: '/static/letters/partner/2.jpg', title: 'MOU Document', category: 'Agreement' }
-    ],
-    ventures: [
-      { src: '/static/ventures/1.png', title: 'Venture Project 1', category: 'Innovation' },
-      { src: '/static/ventures/2.png', title: 'Venture Project 2', category: 'Technology' },
-      { src: '/static/ventures/3.png', title: 'Venture Project 3', category: 'Sustainability' },
-      { src: '/static/ventures/4.png', title: 'Venture Project 4', category: 'Social Impact' },
-      { src: '/static/ventures/5.png', title: 'Venture Project 5', category: 'Environment' },
-      { src: '/static/ventures/6.png', title: 'Venture Project 6', category: 'Community' }
-    ]
+  const projects = [
+    {
+      id: 1,
+      title: "Space Lab - Advanced Research Initiative",
+      subtitle: "ISRO-recognized Space Tutor organizations",
+      description:
+        'ISRO-recognized Space Tutor organizations for the establishment of "Space Labs" in EMRS',
+      src: "/static/space.jpg",
+      thumbnail: "/static/space.jpg",
+      type: "image",
+      category: "education",
+      tags: ["Space Research", "ISRO", "EMRS", "Innovation"],
+    },
+  ];
+
+  const videos = [
+    {
+      id: 1,
+      title: "The Sustainable Environment and Energy Summit 2020 Full Video",
+      description:
+        "The Sustainable Environment and Energy Summit 2020 Full Video organised by Social Responsibility Council on 19th December 2020 at Hotel Le Meridien, Janpath, New Delhi.",
+      youtubeUrl: "https://www.youtube.com/watch?v=A63qyPumPwI",
+      videoId: "A63qyPumPwI",
+      thumbnail: "https://img.youtube.com/vi/A63qyPumPwI/maxresdefault.jpg",
+    },
+    {
+      id: 2,
+      title: "The Second Sustainable Environment and Energy Summit 2020",
+      description: "The Second Sustainable Environment and Energy Summit 2020",
+      youtubeUrl: "https://www.youtube.com/watch?v=k7MrCYbJFKQ",
+      videoId: "k7MrCYbJFKQ",
+      thumbnail: "https://img.youtube.com/vi/k7MrCYbJFKQ/maxresdefault.jpg",
+    },
+    {
+      id: 3,
+      title:
+        "The First Sustainable Environment and Energy Summit 2019 at Hotel Le Meridien, Janpath, New Delhi",
+      description:
+        "The First Sustainable Environment and Energy Summit 2019 at Hotel Le Meridien, Janpath, New Delhi",
+      youtubeUrl: "https://www.youtube.com/watch?v=6gdtaekuH8I",
+      videoId: "6gdtaekuH8I",
+      thumbnail: "https://img.youtube.com/vi/6gdtaekuH8I/maxresdefault.jpg",
+    },
+  ];
+
+  const getProjectsByCategory = (categoryId) => {
+    if (categoryId === "all") {
+      return projects;
+    }
+    return projects.filter((project) => project.category === categoryId);
   };
 
-  const openLightbox = (image) => {
-    setSelectedImage(image);
+  const paginatedProjects = useMemo(() => {
+    const categoryProjects = getProjectsByCategory(categories[activeTab].id);
+    if (showAllImages) {
+      return categoryProjects;
+    }
+    return categoryProjects.slice(0, currentPage * imagesPerPage);
+  }, [activeTab, showAllImages, currentPage, imagesPerPage]);
+
+  const showMoreButtonText = useMemo(() => {
+    const categoryProjects = getProjectsByCategory(categories[activeTab].id);
+    if (showAllImages) {
+      return "Show Less";
+    }
+    return `Show More (${
+      categoryProjects.length - paginatedProjects.length
+    } remaining)`;
+  }, [activeTab, showAllImages, paginatedProjects.length]);
+
+  const currentVideo = videos[currentVideoIndex];
+  const youtubeEmbedUrl = `https://www.youtube.com/embed/${currentVideo.videoId}`;
+
+  const getGridClass = (cardCount) => {
+    if (cardCount === 1) {
+      return "max-w-[450px] mx-auto grid-cols-1";
+    } else if (cardCount === 2) {
+      return "max-w-[900px] mx-auto grid-cols-1 md:grid-cols-2";
+    }
+    return "grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4";
   };
 
-  const closeLightbox = () => {
-    setSelectedImage(null);
+  const openMediaViewer = (item) => {
+    setSelectedMedia(item);
+    setMediaDialog(true);
   };
 
-  const currentImages = galleryImages[activeCategory] || [];
+  const nextVideo = () => {
+    setCurrentVideoIndex((currentVideoIndex + 1) % videos.length);
+  };
+
+  const previousVideo = () => {
+    setCurrentVideoIndex(
+      currentVideoIndex === 0 ? videos.length - 1 : currentVideoIndex - 1
+    );
+  };
+
+  const selectVideo = (index) => {
+    setCurrentVideoIndex(index);
+  };
+
+  const loadMoreImages = () => {
+    if (showAllImages) {
+      setShowAllImages(false);
+      setCurrentPage(1);
+    } else {
+      setCurrentPage((prev) => prev + 1);
+      const categoryProjects = getProjectsByCategory(categories[activeTab].id);
+      if (paginatedProjects.length >= categoryProjects.length) {
+        setShowAllImages(true);
+      }
+    }
+  };
+
+  const resetPagination = () => {
+    setCurrentPage(1);
+    setShowAllImages(false);
+  };
+
+  const handleTabChange = (index) => {
+    setActiveTab(index);
+    resetPagination();
+  };
+
+  const handleImageLoad = (itemId) => {
+    setImageLoading((prev) => ({ ...prev, [itemId]: false }));
+  };
+
+  const handleImageError = (e) => {
+    e.target.src = "/static/placeholder.png";
+  };
 
   return (
-    <div className="min-h-screen bg-gray-50">
-      {/* Header */}
-      <div className="bg-primary-600 text-white py-16">
-        <div className="container mx-auto px-4 text-center">
-          <h1 className="text-4xl md:text-5xl font-bold mb-4">Photo Gallery</h1>
-          <p className="text-xl text-primary-100 max-w-2xl mx-auto">
-            Explore our journey through images - events, team moments, partnerships, and achievements
-          </p>
-        </div>
-      </div>
-
-      {/* Category Tabs */}
-      <div className="bg-white shadow-sm border-b">
-        <div className="container mx-auto px-4">
-          <div className="flex flex-wrap justify-center gap-2 py-6">
-            {categories.map((category) => (
-              <button
-                key={category.id}
-                onClick={() => setActiveCategory(category.id)}
-                className={`px-6 py-3 rounded-full font-medium transition-all duration-200 ${
-                  activeCategory === category.id
-                    ? 'bg-primary-600 text-white shadow-lg'
-                    : 'bg-gray-100 text-gray-700 hover:bg-gray-200'
-                }`}
-              >
-                {category.name}
-                <span className="ml-2 text-sm opacity-75">({category.count})</span>
-              </button>
-            ))}
+    <div className="min-h-screen bg-white">
+      {/* Hero Section */}
+      <div className="relative h-[250px] bg-gradient-to-br from-[#1D3A7C] to-[#2C498D]/60 overflow-hidden">
+        <div
+          className="absolute inset-0 opacity-20"
+          style={{
+            backgroundImage: "url(/static/icon.png)",
+            backgroundSize: "cover",
+            backgroundPosition: "center",
+          }}
+        />
+        <div className="relative h-full flex items-center justify-center">
+          <div className="text-center px-4">
+            <h1 className="text-4xl md:text-5xl font-bold text-white mb-4">
+              Project Gallery
+            </h1>
+            <p className="text-xl text-white/90">
+              Explore Our Innovative Projects & Research
+            </p>
           </div>
         </div>
       </div>
 
-      {/* Gallery Grid */}
-      <div className="container mx-auto px-4 py-12">
-        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
-          {currentImages.map((image, index) => (
-            <div
-              key={index}
-              className="group relative bg-white rounded-lg shadow-md overflow-hidden hover:shadow-xl transition-all duration-300 cursor-pointer"
-              onClick={() => openLightbox(image)}
-            >
-              <div className="aspect-w-4 aspect-h-3 overflow-hidden">
-                <img
-                  src={image.src}
-                  alt={image.title}
-                  className="w-full h-64 object-cover group-hover:scale-105 transition-transform duration-300"
-                  onError={(e) => {
-                    e.target.src = '/static/placeholder.png';
-                  }}
-                />
+      {/* Main Content */}
+      <div className="relative z-10">
+        {/* Full Width Gallery Section */}
+        <section className="bg-white py-12 md:py-16">
+          <div className="container mx-auto px-4 md:px-10">
+            <h2 className="text-3xl md:text-4xl font-semibold text-[#1D3A7C] text-center mb-8 md:mb-12">
+              Featured Projects
+            </h2>
+
+            {/* Project Filter Tabs */}
+            <div className="flex justify-center mb-8 md:mb-10">
+              <div className="inline-flex flex-wrap justify-center gap-2 bg-gray-100 p-2 rounded-full">
+                {categories.map((category, index) => {
+                  const Icon = category.icon;
+                  return (
+                    <button
+                      key={category.id}
+                      onClick={() => handleTabChange(index)}
+                      className={`flex items-center gap-2 px-4 md:px-6 py-2.5 md:py-3 rounded-full font-medium transition-all duration-300 ${
+                        activeTab === index
+                          ? "bg-[#1D3A7C] text-white shadow-lg"
+                          : "bg-transparent text-gray-700 hover:bg-gray-200"
+                      }`}
+                    >
+                      <Icon className="w-4 h-4 md:w-5 md:h-5" />
+                      <span className="text-sm md:text-base">
+                        {category.name}
+                      </span>
+                    </button>
+                  );
+                })}
               </div>
-              
-              {/* Overlay */}
-              <div className="absolute inset-0 bg-black bg-opacity-0 group-hover:bg-opacity-50 transition-all duration-300 flex items-end">
-                <div className="p-4 text-white transform translate-y-full group-hover:translate-y-0 transition-transform duration-300">
-                  <h3 className="font-semibold text-sm mb-1">{image.title}</h3>
-                  <p className="text-xs opacity-90">{image.category}</p>
+            </div>
+
+            {/* Gallery Grid */}
+            <div
+              className={`grid gap-6 max-w-7xl mx-auto ${getGridClass(
+                paginatedProjects.length
+              )}`}
+            >
+              {paginatedProjects.map((item, index) => (
+                <div
+                  key={item.id}
+                  className="gallery-item-animate"
+                  style={{ animationDelay: `${index * 0.1}s` }}
+                >
+                  <div
+                    className="relative bg-white rounded-3xl overflow-hidden shadow-md hover:shadow-2xl transition-all duration-300 cursor-pointer hover:-translate-y-2 h-full flex flex-col max-w-[400px] mx-auto"
+                    onMouseEnter={() => setHoveredItem(item.id)}
+                    onMouseLeave={() => setHoveredItem(null)}
+                  >
+                    {/* Media Content */}
+                    <div className="relative h-[280px] overflow-hidden rounded-t-3xl">
+                      <div className="relative w-full h-full">
+                        {imageLoading[item.id] !== false && (
+                          <div className="absolute inset-0 bg-gray-100 flex items-center justify-center">
+                            <Loader2 className="w-8 h-8 text-[#1D3A7C] animate-spin" />
+                          </div>
+                        )}
+                        <img
+                          src={item.src}
+                          alt={item.title}
+                          className="w-full h-full object-cover"
+                          onLoad={() => handleImageLoad(item.id)}
+                          onError={handleImageError}
+                        />
+
+                        {/* Media Type Badge */}
+                        <div className="absolute top-3 right-3 z-10">
+                          <div
+                            className={`flex items-center gap-1 px-2 py-1 rounded-md text-xs font-medium text-white ${
+                              item.type === "video"
+                                ? "bg-red-500"
+                                : "bg-green-500"
+                            }`}
+                          >
+                            {item.type === "video" ? (
+                              <VideoIcon className="w-3 h-3" />
+                            ) : (
+                              <ImageIcon className="w-3 h-3" />
+                            )}
+                            {item.type}
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+
+                    {/* Card Content */}
+                    <div className="p-5 bg-white rounded-b-3xl flex-shrink-0">
+                      <h3 className="text-lg font-bold text-[#1D3A7C] mb-2">
+                        {item.title}
+                      </h3>
+                      <p className="text-sm text-gray-600">{item.subtitle}</p>
+                    </div>
+
+                    {/* Hover Description Overlay */}
+                    {hoveredItem === item.id && (
+                      <div className="absolute inset-0 bg-white/95 rounded-3xl flex flex-col justify-end p-5 animate-fadeIn">
+                        <h4 className="text-lg font-bold text-[#1D3A7C] mb-2">
+                          {item.title}
+                        </h4>
+                        <p className="text-sm text-gray-600 mb-3 line-clamp-3">
+                          {item.description}
+                        </p>
+                        <div className="flex flex-wrap gap-2 mb-3">
+                          {item.tags.map((tag) => (
+                            <span
+                              key={tag}
+                              className="text-xs px-2 py-1 border border-[#1D3A7C] text-[#1D3A7C] rounded-full"
+                            >
+                              {tag}
+                            </span>
+                          ))}
+                        </div>
+                        <button
+                          onClick={() => openMediaViewer(item)}
+                          className="flex items-center gap-2 px-4 py-2 bg-[#1D3A7C] text-white rounded-full text-sm font-medium hover:bg-[#152d5f] transition-colors w-fit"
+                        >
+                          <Eye className="w-4 h-4" />
+                          View Details
+                        </button>
+                      </div>
+                    )}
+                  </div>
+                </div>
+              ))}
+            </div>
+
+            {/* Show More Button */}
+            {getProjectsByCategory(categories[activeTab].id).length >
+              imagesPerPage && (
+              <div className="flex justify-center mt-10">
+                <button
+                  onClick={loadMoreImages}
+                  className={`flex items-center gap-2 px-8 py-3 rounded-full font-semibold transition-all duration-300 hover:-translate-y-1 hover:shadow-xl ${
+                    showAllImages
+                      ? "bg-red-500 text-white"
+                      : "bg-[#1D3A7C] text-white"
+                  }`}
+                >
+                  {showAllImages ? (
+                    <ChevronUp className="w-5 h-5" />
+                  ) : (
+                    <ChevronDown className="w-5 h-5" />
+                  )}
+                  {showMoreButtonText}
+                </button>
+              </div>
+            )}
+          </div>
+        </section>
+
+        {/* YouTube Video Slider Section */}
+        <section className="bg-gray-50 py-12 md:py-16">
+          <div className="container mx-auto px-4">
+            <div className="max-w-5xl mx-auto">
+              <h2 className="text-3xl md:text-4xl font-semibold text-[#1D3A7C] text-center mb-4">
+                Featured Videos
+              </h2>
+              <p className="text-center text-gray-600 mb-8">
+                Watch our latest project presentations and insights
+              </p>
+
+              {/* Video Player Card */}
+              <div className="bg-white rounded-3xl shadow-xl overflow-hidden hover:shadow-2xl transition-all duration-300">
+                {/* Main Video Display */}
+                <div className="relative">
+                  <div className="relative pt-[56.25%]">
+                    <iframe
+                      src={youtubeEmbedUrl}
+                      title={currentVideo.title}
+                      frameBorder="0"
+                      allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                      allowFullScreen
+                      className="absolute top-0 left-0 w-full h-full"
+                    />
+                  </div>
+
+                  {/* Video Navigation Arrows */}
+                  <button
+                    onClick={previousVideo}
+                    className="absolute left-4 top-1/2 -translate-y-1/2 bg-[#1D3A7C]/80 hover:bg-[#1D3A7C] text-white p-3 rounded-full transition-all duration-300 hover:scale-110"
+                  >
+                    <ChevronLeft className="w-6 h-6" />
+                  </button>
+
+                  <button
+                    onClick={nextVideo}
+                    className="absolute right-4 top-1/2 -translate-y-1/2 bg-[#1D3A7C]/80 hover:bg-[#1D3A7C] text-white p-3 rounded-full transition-all duration-300 hover:scale-110"
+                  >
+                    <ChevronRight className="w-6 h-6" />
+                  </button>
+                </div>
+
+                {/* Video Info */}
+                <div className="p-6">
+                  <h3 className="text-xl font-bold text-[#1D3A7C] mb-3">
+                    {currentVideo.title}
+                  </h3>
+                  <p className="text-gray-600 mb-4">
+                    {currentVideo.description}
+                  </p>
+
+                  <div className="flex items-center justify-between flex-wrap gap-4">
+                    <div className="flex items-center gap-2 text-sm px-3 py-1 border border-[#1D3A7C] text-[#1D3A7C] rounded-full">
+                      <VideoIcon className="w-4 h-4" />
+                      Video {currentVideoIndex + 1} of {videos.length}
+                    </div>
+
+                    <a
+                      href={currentVideo.youtubeUrl}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="flex items-center gap-2 px-4 py-2 bg-red-600 text-white rounded-full text-sm font-medium hover:bg-red-700 transition-colors"
+                    >
+                      <Youtube className="w-4 h-4" />
+                      Watch on YouTube
+                    </a>
+                  </div>
                 </div>
               </div>
-            </div>
-          ))}
-        </div>
 
-        {/* Empty State */}
-        {currentImages.length === 0 && (
-          <div className="text-center py-16">
-            <div className="text-gray-400 mb-4">
-              <svg className="w-16 h-16 mx-auto" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1} d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z" />
-              </svg>
+              {/* Video Thumbnail Navigation */}
+              <div className="flex gap-4 justify-center mt-6 flex-wrap">
+                {videos.map((video, index) => (
+                  <div
+                    key={video.id}
+                    onClick={() => selectVideo(index)}
+                    className={`cursor-pointer rounded-xl overflow-hidden transition-all duration-300 hover:-translate-y-1 hover:shadow-lg min-w-[120px] max-w-[150px] ${
+                      index === currentVideoIndex
+                        ? "ring-4 ring-[#1D3A7C] shadow-lg -translate-y-1"
+                        : ""
+                    }`}
+                  >
+                    <div className="relative">
+                      <img
+                        src={video.thumbnail}
+                        alt={video.title}
+                        className="w-full h-20 object-cover"
+                      />
+                      <div className="absolute inset-0 bg-black/30 flex items-center justify-center opacity-0 hover:opacity-100 transition-opacity">
+                        <Play className="w-6 h-6 text-white" />
+                      </div>
+                    </div>
+                    <div className="bg-white p-2">
+                      <p className="text-xs text-center text-gray-700 line-clamp-1">
+                        {video.title.substring(0, 30)}...
+                      </p>
+                    </div>
+                  </div>
+                ))}
+              </div>
             </div>
-            <h3 className="text-xl font-semibold text-gray-600 mb-2">No images available</h3>
-            <p className="text-gray-500">Images for this category will be added soon.</p>
           </div>
-        )}
+        </section>
       </div>
 
-      {/* Lightbox Modal */}
-      {selectedImage && (
-        <div className="fixed inset-0 bg-black bg-opacity-90 z-50 flex items-center justify-center p-4">
-          <div className="relative max-w-4xl max-h-full">
-            <button
-              onClick={closeLightbox}
-              className="absolute top-4 right-4 text-white hover:text-gray-300 z-10"
-            >
-              <X className="w-8 h-8" />
-            </button>
-            
-            <img
-              src={selectedImage.src}
-              alt={selectedImage.title}
-              className="max-w-full max-h-[80vh] object-contain"
-              onError={(e) => {
-                e.target.src = '/static/placeholder.png';
-              }}
-            />
-            
-            <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black to-transparent p-6">
-              <h3 className="text-white text-xl font-semibold mb-2">{selectedImage.title}</h3>
-              <p className="text-gray-300">{selectedImage.category}</p>
+      {/* Media Viewer Dialog */}
+      {mediaDialog && selectedMedia && (
+        <div className="fixed inset-0 bg-black/90 z-50 flex items-center justify-center p-4">
+          <div className="relative bg-white rounded-2xl max-w-5xl w-full max-h-[90vh] overflow-auto">
+            <div className="sticky top-0 bg-white border-b flex items-center justify-between p-4 z-10">
+              <h3 className="text-xl font-bold text-[#1D3A7C]">
+                {selectedMedia.title}
+              </h3>
+              <button
+                onClick={() => setMediaDialog(false)}
+                className="p-2 hover:bg-gray-100 rounded-full transition-colors"
+              >
+                <X className="w-6 h-6" />
+              </button>
+            </div>
+
+            <div className="p-0">
+              {selectedMedia.type === "image" ? (
+                <img
+                  src={selectedMedia.src}
+                  alt={selectedMedia.title}
+                  className="w-full max-h-[600px] object-contain"
+                  onError={handleImageError}
+                />
+              ) : (
+                <video
+                  src={selectedMedia.src}
+                  controls
+                  className="w-full max-h-[600px]"
+                />
+              )}
+            </div>
+
+            <div className="p-6">
+              <h4 className="text-lg font-bold text-[#1D3A7C] mb-3">
+                {selectedMedia.subtitle}
+              </h4>
+              <p className="text-gray-600 mb-4">{selectedMedia.description}</p>
+
+              <div className="flex flex-wrap gap-2">
+                {selectedMedia.tags.map((tag) => (
+                  <span
+                    key={tag}
+                    className="px-3 py-1 text-sm border border-[#1D3A7C] text-[#1D3A7C] rounded-full"
+                  >
+                    {tag}
+                  </span>
+                ))}
+              </div>
             </div>
           </div>
         </div>
       )}
+
+      <style jsx>{`
+        @keyframes fadeInUp {
+          from {
+            opacity: 0;
+            transform: translateY(30px);
+          }
+          to {
+            opacity: 1;
+            transform: translateY(0);
+          }
+        }
+
+        @keyframes fadeIn {
+          from {
+            opacity: 0;
+          }
+          to {
+            opacity: 1;
+          }
+        }
+
+        .gallery-item-animate {
+          animation: fadeInUp 0.6s ease-out both;
+        }
+
+        .animate-fadeIn {
+          animation: fadeIn 0.3s ease forwards;
+        }
+
+        .line-clamp-3 {
+          display: -webkit-box;
+          -webkit-line-clamp: 3;
+          -webkit-box-orient: vertical;
+          overflow: hidden;
+        }
+
+        .line-clamp-1 {
+          display: -webkit-box;
+          -webkit-line-clamp: 1;
+          -webkit-box-orient: vertical;
+          overflow: hidden;
+        }
+      `}</style>
     </div>
   );
 };

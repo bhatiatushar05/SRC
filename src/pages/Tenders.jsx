@@ -1,8 +1,29 @@
+import React from "react";
+import {
+  useTendersData,
+  TendersHero,
+  TendersStats,
+  TendersTable,
+} from "./tenders/index.js";
+
 const Tenders = () => {
+  const state = useTendersData();
   return (
-    <div className="container mx-auto px-4 py-8">
-      <h1 className="text-4xl font-bold text-textColor mb-6">Tenders</h1>
-      <p className="text-lg text-gray-700">Coming soon...</p>
+    <div className="min-h-screen">
+      <TendersHero />
+      <TendersTable
+        loading={state.loading}
+        filter={state.filter}
+        setFilter={state.setFilter}
+        searchQuery={state.searchQuery}
+        setSearchQuery={state.setSearchQuery}
+        filteredTenders={state.filteredTenders}
+        getStatusColor={state.getStatusColor}
+        getBadgeStyle={state.getBadgeStyle}
+        getDaysUntilEnd={state.getDaysUntilEnd}
+        formatDate={state.formatDate}
+        canDownload={state.canDownload}
+      />
     </div>
   );
 };

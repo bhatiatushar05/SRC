@@ -1,124 +1,41 @@
-import { useState, useEffect } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
-import HeroSection from '../components/HeroSection';
-import LetterSlider from '../components/LetterSlider';
-import SocialSection from '../components/SocialSection';
-import CounterSection from '../components/CounterSection';
-import SrcLoader from '../components/SrcLoader';
-import { setHomeData, setInternshipValue, setVolunteerValue, setPledgeValue } from '../store/slices/mainSlice';
+import { useState, useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import HeroSection from "../components/HeroSection";
+import LetterSlider from "../components/LetterSlider";
+import SocialSection from "../components/SocialSection";
+import CounterSection from "../components/CounterSection";
+import SrcLoader from "../components/SrcLoader";
+import {
+  setHomeData,
+  setInternshipValue,
+  setVolunteerValue,
+  setPledgeValue,
+} from "../store/slices/mainSlice";
+import { HomeService } from "./home/services/homeService.js";
 
 const Home = () => {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
   const [currentSlide, setCurrentSlide] = useState(0);
   const dispatch = useDispatch();
-  const homeData = useSelector(state => state.main.homeData);
+  const homeData = useSelector((state) => state.main.homeData);
 
   useEffect(() => {
     // Set document title
-    document.title = 'Social Responsibility Council - SrCouncil';
-    
-    // Simulate data loading (replacing the original API call with static data)
+    document.title = "Social Responsibility Council - SrCouncil";
+
+    // Load data via service (uses mock data for now)
     const loadHomeData = async () => {
       try {
-        // Static data that was originally fetched from API
-        const homeData = {
-          banner: [
-            {
-              id: 1,
-              title: "Hello world",
-              image: "/static/index/one-500.jpg",
-              creation_date: "2021-07-19T11:37:41.586073+05:30",
-              is_active: true,
-              user: 1
-            },
-            {
-              id: 2,
-              title: "ds",
-              image: "/static/index/hbjhb-01_1_4MbtLfB.png",
-              creation_date: "2021-07-19T12:02:47.780352+05:30",
-              is_active: true,
-              user: 1
-            },
-            {
-              id: 3,
-              title: "sd",
-              image: "/static/index/master-splash.jpg",
-              creation_date: "2021-07-19T12:03:06.795777+05:30",
-              is_active: true,
-              user: 1
-            },
-            {
-              id: 4,
-              title: "Hello world",
-              image: "/static/index/https__specials-images.forbesimg.com_imageserve_5dbb4182d85e3000078fddae_0x0.jpg",
-              creation_date: "2021-07-19T12:03:14.127306+05:30",
-              is_active: true,
-              user: 1
-            }
-          ],
-          upcoming_activity: [],
-          twitter_data: [
-            // Twitter data truncated for brevity - can be added if needed
-          ],
-          master_data: {
-            image: "/static/space.jpg",
-            title: "Space Lab - Advanced Research Initiative",
-            description: " ISRO-recognized Space Tutor organizations for the establishment of 'Space Labs' in EMRS"
-          },
-          master_list: [
-            {
-              image: "/static/space.jpg",
-              title: "Space Lab - Advanced Research Initiative",
-              description: " ISRO-recognized Space Tutor organizations for the establishment of 'Space Labs' in EMRS"
-            },
-            {
-              image: "/static/index/SRC_SEE_Summit_2021_3.jpg",
-              title: "The Third Sustainable Environment And Energy Summit 2021",
-              description: "Carrying the legacy forward of creating awareness on Green Business, Sustainable Energy & Sustainable Environment at the 3rd Edition of The Sustainable Environment And Energy Summit 2021"
-            },
-            {
-              image: "/static/index/1.jpg",
-              title: "Khadi: for Make In India Research Book by Social Responsibility Council",
-              description: "Shri Amit Shah, Hon'ble Home Minister, former President BJP, released Research Book brought out by Khadi & Village Industries Commission & SRC"
-            },
-            {
-              image: "/static/index/3.jpg",
-              title: "Agri-Mechanization: for Make In India by Social Responsibility Council",
-              description: "Shri Radha Mohan Singh, Former Hon'ble Cabinet Minister of Agriculture and Farmers Welfare released Research Book brought out by Ministry of Agriculture and SRC"
-            },
-            {
-              image: "/static/index/2.jpg",
-              title: "Railway Protection Force Research Book by Social Responsibility Council",
-              description: "Shri M. Venkaiah Naidu, Hon'ble Vice President of India released Research Book brought out by RPF at 20th All India Police Band Competition closing ceremony at Rly Sports Complex, Secunderabad"
-            },
-            {
-              image: "/static/index/5_XzFqa91.jpg",
-              title: "The First Sustainable Environment and Energy Summit 2019",
-              description: "Initiated small change of contributing to environment sustainability with the beginning of very 1st edition of the Sustainable Environment and Energy Summit 2019"
-            },
-            {
-              image: "/static/index/6_ZpVhq0P.jpg",
-              title: "The Second Sustainable Environment and Energy Summit 2020",
-              description: "Continuing the tradition of Achieving environmental peace with growth, progress & environmental mortality, the 2nd edition of the Sustainable Environment and Energy Summit 2020 continued the story of change"
-            },
-            {
-              image: "/static/index/4.jpg",
-              title: "Make A Positive Change - Be Socially Responsible",
-              description: "We believe by introducing such modules will integrate imbibed values in every generations and acumen into better decision making. It will result to better CSR practices for a sustainable World"
-            },
-            {
-              image: "/static/index/PHOTO-2021-08-19-11-23-55.jpg",
-              title: "SRC Founder Mr. Arun Khurana received environment advocacy award at Good Air Summit by Honb'le Justice Mr. Swatanter Kumar",
-              description: "At Jawaharlal Nehru Stadium, New Delhi"
-            }
-          ]
-        };
-
-        dispatch(setHomeData(homeData));
-        setLoading(false);
-      } catch {
-        setError('An error occurred while loading data');
+        const result = await HomeService.getHomeData();
+        if (result.success) {
+          dispatch(setHomeData(result.data));
+        } else {
+          setError(result.message || "Failed to load data");
+        }
+      } catch (e) {
+        setError("An error occurred while loading data");
+      } finally {
         setLoading(false);
       }
     };
@@ -136,8 +53,8 @@ const Home = () => {
       }
     };
 
-    window.addEventListener('scroll', handleScroll);
-    return () => window.removeEventListener('scroll', handleScroll);
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
   }, [dispatch]);
 
   // Auto-slide functionality
@@ -160,7 +77,10 @@ const Home = () => {
 
   const prevSlide = () => {
     if (homeData?.master_list?.length > 0) {
-      setCurrentSlide((prev) => (prev - 1 + homeData.master_list.length) % homeData.master_list.length);
+      setCurrentSlide(
+        (prev) =>
+          (prev - 1 + homeData.master_list.length) % homeData.master_list.length
+      );
     }
   };
 
@@ -188,9 +108,9 @@ const Home = () => {
                 key={index}
                 onClick={() => setCurrentSlide(index)}
                 className={`p-3 m-2 rounded-lg cursor-pointer transition-all duration-300 ${
-                  currentSlide === index 
-                    ? 'bg-orange-500' 
-                    : 'bg-gray-900 hover:bg-gray-700'
+                  currentSlide === index
+                    ? "bg-orange-500"
+                    : "bg-gray-900 hover:bg-gray-700"
                 }`}
               >
                 <div className="flex items-center space-x-3">
@@ -199,12 +119,16 @@ const Home = () => {
                     alt={item.title}
                     className="w-12 h-12 object-cover rounded-lg"
                     onError={(e) => {
-                      e.target.src = '/static/placeholder.png';
+                      e.target.src = "/static/placeholder.png";
                     }}
                   />
                   <div className="flex-1 text-left">
-                    <h3 className="text-white font-light text-sm leading-tight">{item.title}</h3>
-                    <p className="text-white text-xs opacity-80 mt-1 line-clamp-2">{item.description}</p>
+                    <h3 className="text-white font-light text-sm leading-tight">
+                      {item.title}
+                    </h3>
+                    <p className="text-white text-xs opacity-80 mt-1 line-clamp-2">
+                      {item.description}
+                    </p>
                   </div>
                 </div>
               </div>
@@ -217,13 +141,13 @@ const Home = () => {
           {homeData?.master_list?.length > 0 && (
             <div className="h-full relative">
               {/* Background Image */}
-              <div 
+              <div
                 className="absolute inset-0 bg-cover bg-center bg-no-repeat"
-                style={{ 
+                style={{
                   backgroundImage: `url(${homeData.master_list[currentSlide]?.image})`,
                 }}
               />
-              
+
               {/* Content Overlay */}
               <div className="absolute bottom-0 left-0 right-0 bg-black bg-opacity-70 p-8">
                 <div className="container mx-auto text-center">
@@ -241,16 +165,36 @@ const Home = () => {
                 onClick={prevSlide}
                 className="absolute left-4 top-1/2 transform -translate-y-1/2 bg-black bg-opacity-50 text-white p-2 rounded-full hover:bg-opacity-70 transition-opacity"
               >
-                <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
+                <svg
+                  className="w-6 h-6"
+                  fill="none"
+                  stroke="currentColor"
+                  viewBox="0 0 24 24"
+                >
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    strokeWidth={2}
+                    d="M15 19l-7-7 7-7"
+                  />
                 </svg>
               </button>
               <button
                 onClick={nextSlide}
                 className="absolute right-4 top-1/2 transform -translate-y-1/2 bg-black bg-opacity-50 text-white p-2 rounded-full hover:bg-opacity-70 transition-opacity"
               >
-                <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+                <svg
+                  className="w-6 h-6"
+                  fill="none"
+                  stroke="currentColor"
+                  viewBox="0 0 24 24"
+                >
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    strokeWidth={2}
+                    d="M9 5l7 7-7 7"
+                  />
                 </svg>
               </button>
             </div>
@@ -271,13 +215,28 @@ const Home = () => {
           </div>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
             <div>
-              <LetterSlider title="Appreciation" path="appreciation" length={3} actual={3} />
+              <LetterSlider
+                title="Appreciation"
+                path="appreciation"
+                length={3}
+                actual={3}
+              />
             </div>
             <div>
-              <LetterSlider title="Knowledge Partner" path="partner" length={6} actual={6} />
+              <LetterSlider
+                title="Knowledge Partner"
+                path="partner"
+                length={6}
+                actual={6}
+              />
             </div>
             <div>
-              <LetterSlider title="Letter for Recommendation" path="recommendation" length={8} actual={30} />
+              <LetterSlider
+                title="Letter for Recommendation"
+                path="recommendation"
+                length={8}
+                actual={30}
+              />
             </div>
           </div>
         </div>

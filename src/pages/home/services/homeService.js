@@ -1,7 +1,7 @@
 // Home Page Service
 // Service for managing home page data
 
-import { supabase } from '../../../supabase/config.js'
+// import { supabase } from '../../../../supabase/config.js'
 import { mockHomeData } from '../data/mockHomeData.js'
 
 export class HomeService {
@@ -138,7 +138,7 @@ export class HomeService {
     try {
       // TODO: Add your RPC call here
       // return await supabase.rpc('get_home_analytics')
-      
+
       return {
         success: true,
         data: {},
@@ -157,7 +157,7 @@ export class HomeService {
     try {
       // TODO: Add your RPC call here
       // return await supabase.rpc('get_live_stats')
-      
+
       return {
         success: true,
         data: {},

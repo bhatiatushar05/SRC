@@ -1,40 +1,40 @@
 // Mock Data for Home Page
 // Test data that matches the current Home.jsx structure
 
-export const mockBanners = [
-  {
-    id: 1,
-    title: "Hello world",
-    image: "/static/index/one-500.jpg",
-    creation_date: "2021-07-19T11:37:41.586073+05:30",
-    is_active: true,
-    user: 1
-  },
-  {
-    id: 2,
-    title: "ds",
-    image: "/static/index/hbjhb-01_1_4MbtLfB.png",
-    creation_date: "2021-07-19T12:02:47.780352+05:30",
-    is_active: true,
-    user: 1
-  },
-  {
-    id: 3,
-    title: "sd",
-    image: "/static/index/master-splash.jpg",
-    creation_date: "2021-07-19T12:03:06.795777+05:30",
-    is_active: true,
-    user: 1
-  },
-  {
-    id: 4,
-    title: "Hello world",
-    image: "/static/index/https__specials-images.forbesimg.com_imageserve_5dbb4182d85e3000078fddae_0x0.jpg",
-    creation_date: "2021-07-19T12:03:14.127306+05:30",
-    is_active: true,
-    user: 1
-  }
-]
+// export const mockBanners = [
+//   {
+//     id: 1,
+//     title: "Hello world",
+//     image: "/static/index/one-500.jpg",
+//     creation_date: "2021-07-19T11:37:41.586073+05:30",
+//     is_active: true,
+//     user: 1
+//   },
+//   {
+//     id: 2,
+//     title: "ds",
+//     image: "/static/index/hbjhb-01_1_4MbtLfB.png",
+//     creation_date: "2021-07-19T12:02:47.780352+05:30",
+//     is_active: true,
+//     user: 1
+//   },
+//   {
+//     id: 3,
+//     title: "sd",
+//     image: "/static/index/master-splash.jpg",
+//     creation_date: "2021-07-19T12:03:06.795777+05:30",
+//     is_active: true,
+//     user: 1
+//   },
+//   {
+//     id: 4,
+//     title: "Hello world",
+//     image: "/static/index/https__specials-images.forbesimg.com_imageserve_5dbb4182d85e3000078fddae_0x0.jpg",
+//     creation_date: "2021-07-19T12:03:14.127306+05:30",
+//     is_active: true,
+//     user: 1
+//   }
+// ]
 
 export const mockMasterList = [
   {
@@ -84,11 +84,11 @@ export const mockMasterList = [
   }
 ]
 
-export const mockMasterData = {
-  image: "/static/space.jpg",
-  title: "Space Lab - Advanced Research Initiative",
-  description: "ISRO-recognized Space Tutor organizations for the establishment of 'Space Labs' in EMRS"
-}
+// export const mockMasterData = {
+//   image: "/static/space.jpg",
+//   title: "Space Lab - Advanced Research Initiative",
+//   description: "ISRO-recognized Space Tutor organizations for the establishment of 'Space Labs' in EMRS"
+// }
 
 export const mockLetters = [
   {
@@ -118,9 +118,9 @@ export const mockCounters = {
 }
 
 export const mockHomeData = {
-  banner: mockBanners,
+  // banner: mockBanners,
   upcoming_activity: [],
   twitter_data: [],
-  master_data: mockMasterData,
+  // master_data: mockMasterData,
   master_list: mockMasterList
 }
