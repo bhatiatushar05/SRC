@@ -43,7 +43,7 @@ const Advisory = () => {
         id: 2,
         name: "S. P. Singh",
         position: "Honorary Advisor",
-        image: "/static/advisory/77.jpg",
+        image: "/static/advisory/SP_Sing_copy.jpg",
         category: "SOCIAL",
         biography:
           "Mr. S. P. Singh completed his Post-graduation Degree in commerce from KUK University in 1981. He has served as a Lecturer in Commerce for 11 Years and taught at Graduation and Post-graduation levels. Further, he had joined the Khadi and Village Industries Commission (KVIC), Govt. of India as the Director in 1992 and has served the Khadi and Village Industries Commission in different capacities till his retirement in February 2018.",
@@ -61,7 +61,7 @@ const Advisory = () => {
         id: 4,
         name: "Sutanu Sinha",
         position: "Honorary Advisor",
-        image: "/static/advisory/9.png",
+        image: "/static/advisory/77.jpg",
         category: "SOCIAL",
         biography:
           "CS Sutanu Sinha is the former Chief Executive of the Institute of Company Secretaries of India. Mr. Sinha headed the Academics & Professional Development Directorate of ICSI. He is a Fellow Member of the Institute of Company Secretaries of India and also a Member of the Institute of Chartered Secretaries and Administrators, London (UK). He is also Global Corporate Governance Forum (GCGF), IFC trained Trainer for Directors Development Programmes and Corporate Secretaries.",
@@ -70,7 +70,7 @@ const Advisory = () => {
         id: 5,
         name: "Ghanshyam Goel",
         position: "Honorary Advisor",
-        image: "/static/advisory/Dr._Rawail_Singh.jpg",
+        image: "/static/advisory/WhatsApp_Image_2021-09-06_at_2.39.27_PM.jpeg",
         category: "SOCIAL",
         biography:
           "Mr. Ghanshyam Goel is a dedicated Indian Administrative Officer with experience in achieving memorable campaigns and cross-team collaboration. He is proactive and excited to partner with like-minded individuals.",
@@ -79,7 +79,7 @@ const Advisory = () => {
         id: 6,
         name: "Vivek Narayan Sharma",
         position: "Honorary Advisor",
-        image: "/static/advisory/SP_Sing_copy.jpg",
+        image: "/static/advisory/9.png",
         category: "SOCIAL",
         biography:
           "Mr. Vivek Narayan Sharma -a Socio-Politico-Constitution expert and renowned Advocate practicing at Supreme Court of India. He is the ex-Joint Secretary of Supreme Court Advocates on Record Association. He is the President of 'Society for Criminal Justice' and National Advisor to 'Ladli Foundation', Consultant & Convener for eminent social, political outfits and law journals in India. He is Advisor (Legal) to Indo-Canada Chambre De Commerce (ICCC). One of the most popular, most discussed and most-read Columnist for Times of India (TOI) and Economic Times (ET), he has authored the famous book 'Electionomics' published by leading publisher Thomson Reuters.",
@@ -88,27 +88,171 @@ const Advisory = () => {
     ENVIRONMENT: [
       {
         id: 7,
-        name: "Environmental Expert 1",
-        image: "/static/advisory/Faculty-Proforma_2019-20.bmp",
+        name: "Arun Khurana",
+        position: "Founder",
+        image: "/static/advisory/1-min-2.jpg",
         category: "ENVIRONMENT",
+        biography:
+          "Choose the right path without worrying about the result or the effort. Create values for social and national exigencies. Analyze mistakes in pursuit of excellence. Mr. Arun Khurana, the Founder Director of SRC, is a social scientist and activist of high acclaim. He is also a media mogul. In addition to SRC, he is at the helm of two commercially successful companies as their Director. These companies are Degree 360 Solutions Private Limited and Degree 360 Software Private Limited.",
       },
       {
         id: 8,
-        name: "Environmental Expert 2",
-        image: "/static/advisory/new_resume2020.bmp",
+        name: "S. P. Singh",
+        position: "Honorary Advisor",
+        image: "/static/advisory/SP_Sing_copy.jpg",
         category: "ENVIRONMENT",
+        biography:
+          "Mr. S. P. Singh completed his Post-graduation Degree in commerce from KUK University in 1981. He has served as a Lecturer in Commerce for 11 Years and taught at Graduation and Post-graduation levels. Further, he had joined the Khadi and Village Industries Commission (KVIC), Govt. of India as the Director in 1992 and has served the Khadi and Village Industries Commission in different capacities till his retirement in February 2018.",
       },
-    ],
-    "TRAFFIC MOBILITY": [
       {
         id: 9,
-        name: "Traffic Expert 1",
+        name: "R Ranjan Rashmi",
+        position: "Honorary Advisor",
+        image: "/static/advisory/3-new.jpg",
+        category: "ENVIRONMENT",
+        biography:
+          "Shri Rajani Ranjan Rashmi is a retired officer of the Indian Administrative Service and is known for his expertise in the field of environment and trade. During 35 years of his public service, he has served the Central Government and the State Government in various capacities, particularly in the fields of financial administration, environmental management and international trade.",
+      },
+      {
+        id: 10,
+        name: "Sutanu Sinha",
+        position: "Honorary Advisor",
+        image: "/static/advisory/77.jpg",
+        category: "ENVIRONMENT",
+        biography:
+          "CS Sutanu Sinha is the former Chief Executive of the Institute of Company Secretaries of India. Mr. Sinha headed the Academics & Professional Development Directorate of ICSI. He is a Fellow Member of the Institute of Company Secretaries of India and also a Member of the Institute of Chartered Secretaries and Administrators, London (UK). He is also Global Corporate Governance Forum (GCGF), IFC trained Trainer for Directors Development Programmes and Corporate Secretaries.",
+      },
+      {
+        id: 11,
+        name: "Ghanshyam Goel",
+        position: "Honorary Advisor",
         image: "/static/advisory/WhatsApp_Image_2021-09-06_at_2.39.27_PM.jpeg",
-        category: "TRAFFIC MOBILITY",
+        category: "ENVIRONMENT",
+        biography:
+          "Mr. Ghanshyam Goel is a dedicated Indian Administrative Officer with experience in achieving memorable campaigns and cross-team collaboration. He is proactive and excited to partner with like-minded individuals.",
+      },
+      {
+        id: 12,
+        name: "Vivek Narayan Sharma",
+        position: "Honorary Advisor",
+        image: "/static/advisory/9.png",
+        category: "ENVIRONMENT",
+        biography:
+          "Mr. Vivek Narayan Sharma -a Socio-Politico-Constitution expert and renowned Advocate practicing at Supreme Court of India. He is the ex-Joint Secretary of Supreme Court Advocates on Record Association. He is the President of 'Society for Criminal Justice' and National Advisor to 'Ladli Foundation', Consultant & Convener for eminent social, political outfits and law journals in India. He is Advisor (Legal) to Indo-Canada Chambre De Commerce (ICCC). One of the most popular, most discussed and most-read Columnist for Times of India (TOI) and Economic Times (ET), he has authored the famous book 'Electionomics' published by leading publisher Thomson Reuters.",
+      },
+      {
+        id: 13,
+        name: "Rawail Singh",
+        position: "Honorary Advisor",
+        image: "/static/advisory/Dr._Rawail_Singh.jpg",
+        category: "ENVIRONMENT",
+        biography:
+          "Dr. Rawail Singh has Worked with University of Delhi as Professor of Punjabi (Was Head of the Department from. He has also Worked as Secretary, Punjabi Academy, Government of NCT of Delhi. He also Worked as Assistant Secretary Punjabi academy, Govt, Of NCT of Delhi. Worked As Newsreader (Punjabi) in All India Radio. He was Nominated as Member, Governing Council (Vice Chancellor's Nominee), SGND Khalsa College, University of Delhi, and Nominated as Member, Governing Council (Vice Chancellor's Nominee), Mata Sundri College, University of Delhi.",
+      },
+      {
+        id: 14,
+        name: "Gurmohinder Singh",
+        position: "Honorary Advisor",
+        image: "/static/advisory/new_resume2020.bmp",
+        category: "ENVIRONMENT",
+        biography:
+          "Dr. Gurmohinder Singh has a Post Graduate Diploma in Journalism from Bhartiya Vidya Bhawan-1992. He is working as Associate Professor in the Department of Punjabi, Sri Guru Nanak Dev Khalsa College, University of Delhi. Some of his famous books are Tara Singh Di Kavita Da Vikas,(Criticism), Jaswant deed da Kaav Jagat(Criticism),  Adhoora Waak (Poetry). His 13 papers are presented in National Seminar with More than 100 reviews & articles published in Daily Newspaper & magazines.",
+      },
+      {
+        id: 15,
+        name: "Narender Kumar Bishnoi",
+        position: "Honorary Advisor",
+        image: "/static/advisory/Faculty-Proforma_2019-20.bmp",
+        category: "ENVIRONMENT",
+        biography:
+          'Narender Kumar Bishnoi  is a Assistant Professor at Campus Law Centre. He has been awarded Nipun Rover ( Rajya purskaar) by Rajasthan Rajya Bharat Scout and Guide. He is a Member(Academic council Nominee), Admission Committee for Law courses, faculty of law, University of Delhi, 2019-20. He presented a Paper on Gandhi\'s view on Compulsory Education in National Seminar, "Gandhi On Duties", organized by Legal aid Society, Campus law Centre in collaboration with CDLSA,Delhi, 30th January 2020 and Teacher Convener of 16th K.K. Luthra Memorial Moot Court Competition organised by Campus Law Centre, Faculty of Law, University of Delhi,17-19 January 2020',
       },
     ],
+    "TRAFFIC MOBILITY": [],
     SECURITY: [],
-    EDUCATION: [],
+    EDUCATION: [
+      {
+        id: 16,
+        name: "Arun Khurana",
+        position: "Founder",
+        image: "/static/advisory/1-min-2.jpg",
+        category: "EDUCATION",
+        biography:
+          "Choose the right path without worrying about the result or the effort. Create values for social and national exigencies. Analyze mistakes in pursuit of excellence. Mr. Arun Khurana, the Founder Director of SRC, is a social scientist and activist of high acclaim. He is also a media mogul. In addition to SRC, he is at the helm of two commercially successful companies as their Director. These companies are Degree 360 Solutions Private Limited and Degree 360 Software Private Limited.",
+      },
+      {
+        id: 17,
+        name: "S. P. Singh",
+        position: "Honorary Advisor",
+        image: "/static/advisory/SP_Sing_copy.jpg",
+        category: "EDUCATION",
+        biography:
+          "Mr. S. P. Singh completed his Post-graduation Degree in commerce from KUK University in 1981. He has served as a Lecturer in Commerce for 11 Years and taught at Graduation and Post-graduation levels. Further, he had joined the Khadi and Village Industries Commission (KVIC), Govt. of India as the Director in 1992 and has served the Khadi and Village Industries Commission in different capacities till his retirement in February 2018.",
+      },
+      {
+        id: 18,
+        name: "R Ranjan Rashmi",
+        position: "Honorary Advisor",
+        image: "/static/advisory/3-new.jpg",
+        category: "EDUCATION",
+        biography:
+          "Shri Rajani Ranjan Rashmi is a retired officer of the Indian Administrative Service and is known for his expertise in the field of environment and trade. During 35 years of his public service, he has served the Central Government and the State Government in various capacities, particularly in the fields of financial administration, environmental management and international trade.",
+      },
+      {
+        id: 19,
+        name: "Sutanu Sinha",
+        position: "Honorary Advisor",
+        image: "/static/advisory/77.jpg",
+        category: "EDUCATION",
+        biography:
+          "CS Sutanu Sinha is the former Chief Executive of the Institute of Company Secretaries of India. Mr. Sinha headed the Academics & Professional Development Directorate of ICSI. He is a Fellow Member of the Institute of Company Secretaries of India and also a Member of the Institute of Chartered Secretaries and Administrators, London (UK). He is also Global Corporate Governance Forum (GCGF), IFC trained Trainer for Directors Development Programmes and Corporate Secretaries.",
+      },
+      {
+        id: 20,
+        name: "Ghanshyam Goel",
+        position: "Honorary Advisor",
+        image: "/static/advisory/WhatsApp_Image_2021-09-06_at_2.39.27_PM.jpeg",
+        category: "EDUCATION",
+        biography:
+          "Mr. Ghanshyam Goel is a dedicated Indian Administrative Officer with experience in achieving memorable campaigns and cross-team collaboration. He is proactive and excited to partner with like-minded individuals.",
+      },
+      {
+        id: 21,
+        name: "Vivek Narayan Sharma",
+        position: "Honorary Advisor",
+        image: "/static/advisory/9.png",
+        category: "EDUCATION",
+        biography:
+          "Mr. Vivek Narayan Sharma -a Socio-Politico-Constitution expert and renowned Advocate practicing at Supreme Court of India. He is the ex-Joint Secretary of Supreme Court Advocates on Record Association. He is the President of 'Society for Criminal Justice' and National Advisor to 'Ladli Foundation', Consultant & Convener for eminent social, political outfits and law journals in India. He is Advisor (Legal) to Indo-Canada Chambre De Commerce (ICCC). One of the most popular, most discussed and most-read Columnist for Times of India (TOI) and Economic Times (ET), he has authored the famous book 'Electionomics' published by leading publisher Thomson Reuters.",
+      },
+      {
+        id: 22,
+        name: "Rawail Singh",
+        position: "Honorary Advisor",
+        image: "/static/advisory/Dr._Rawail_Singh.jpg",
+        category: "EDUCATION",
+        biography:
+          "Dr. Rawail Singh has Worked with University of Delhi as Professor of Punjabi (Was Head of the Department from. He has also Worked as Secretary, Punjabi Academy, Government of NCT of Delhi. He also Worked as Assistant Secretary Punjabi academy, Govt, Of NCT of Delhi. Worked As Newsreader (Punjabi) in All India Radio. He was Nominated as Member, Governing Council (Vice Chancellor's Nominee), SGND Khalsa College, University of Delhi, and Nominated as Member, Governing Council (Vice Chancellor's Nominee), Mata Sundri College, University of Delhi.",
+      },
+      {
+        id: 23,
+        name: "Gurmohinder Singh",
+        position: "Honorary Advisor",
+        image: "/static/advisory/new_resume2020.bmp",
+        category: "EDUCATION",
+        biography:
+          "Dr. Gurmohinder Singh has a Post Graduate Diploma in Journalism from Bhartiya Vidya Bhawan-1992. He is working as Associate Professor in the Department of Punjabi, Sri Guru Nanak Dev Khalsa College, University of Delhi. Some of his famous books are Tara Singh Di Kavita Da Vikas,(Criticism), Jaswant deed da Kaav Jagat(Criticism),  Adhoora Waak (Poetry). His 13 papers are presented in National Seminar with More than 100 reviews & articles published in Daily Newspaper & magazines.",
+      },
+      {
+        id: 24,
+        name: "Narender Kumar Bishnoi",
+        position: "Honorary Advisor",
+        image: "/static/advisory/Faculty-Proforma_2019-20.bmp",
+        category: "EDUCATION",
+        biography:
+          'Narender Kumar Bishnoi  is a Assistant Professor at Campus Law Centre. He has been awarded Nipun Rover ( Rajya purskaar) by Rajasthan Rajya Bharat Scout and Guide. He is a Member(Academic council Nominee), Admission Committee for Law courses, faculty of law, University of Delhi, 2019-20. He presented a Paper on Gandhi\'s view on Compulsory Education in National Seminar, "Gandhi On Duties", organized by Legal aid Society, Campus law Centre in collaboration with CDLSA,Delhi, 30th January 2020 and Teacher Convener of 16th K.K. Luthra Memorial Moot Court Competition organised by Campus Law Centre, Faculty of Law, University of Delhi,17-19 January 2020',
+      },
+    ],
     INFRASTRUCTURE: [],
   };
 

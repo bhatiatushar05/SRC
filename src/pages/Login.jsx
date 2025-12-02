@@ -1,170 +1,108 @@
-import React, { useState } from 'react';
-import { Eye, EyeOff, Mail, Lock, User } from 'lucide-react';
+import React from "react";
+import { Building2, LineChart } from "lucide-react";
+
+const csrProjects = [
+  {
+    id: 1,
+    projectName: "Space Lab Project-Under CSR initiative of BPCL",
+    psuName: "Bharat Petroleum Corporation Limited (BPCL)",
+    description:
+      "ISRO-recognized Space Tutor organizations for the establishment of “Space Labs” in EMRS.",
+    dashboardLink: "https://nstfds.vercel.app/login",
+  },
+];
 
 const Login = () => {
-  const [showPassword, setShowPassword] = useState(false);
-  const [formData, setFormData] = useState({
-    email: '',
-    password: ''
-  });
-
-  const handleInputChange = (e) => {
-    const { name, value } = e.target;
-    setFormData(prev => ({
-      ...prev,
-      [name]: value
-    }));
-  };
-
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    console.log('Login attempt:', formData);
-    // Add login logic here
-  };
-
   return (
-    <div className="min-h-screen bg-gradient-to-br from-primary-600 via-primary-700 to-primary-800 flex items-center justify-center py-12 px-4 sm:px-6 lg:px-8">
-      <div className="max-w-md w-full space-y-8">
-        {/* Header */}
-        <div className="text-center">
-          <img
-            src="/static/src.png"
-            alt="SRC Logo"
-            className="mx-auto h-16 w-auto"
-          />
-          <h2 className="mt-6 text-3xl font-bold text-white">
-            Welcome Back
-          </h2>
-          <p className="mt-2 text-sm text-primary-100">
-            Sign in to your SRC account
-          </p>
-        </div>
-
-        {/* Login Form */}
-        <div className="bg-white rounded-lg shadow-xl p-8">
-          <form className="space-y-6" onSubmit={handleSubmit}>
-            {/* Email Field */}
-            <div>
-              <label htmlFor="email" className="block text-sm font-medium text-gray-700 mb-2">
-                Email Address
-              </label>
-              <div className="relative">
-                <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
-                  <Mail className="h-5 w-5 text-gray-400" />
-                </div>
-                <input
-                  id="email"
-                  name="email"
-                  type="email"
-                  autoComplete="email"
-                  required
-                  value={formData.email}
-                  onChange={handleInputChange}
-                  className="block w-full pl-10 pr-3 py-3 border border-gray-300 rounded-md leading-5 bg-white placeholder-gray-500 focus:outline-none focus:placeholder-gray-400 focus:ring-1 focus:ring-primary-500 focus:border-primary-500"
-                  placeholder="Enter your email"
-                />
-              </div>
-            </div>
-
-            {/* Password Field */}
-            <div>
-              <label htmlFor="password" className="block text-sm font-medium text-gray-700 mb-2">
-                Password
-              </label>
-              <div className="relative">
-                <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
-                  <Lock className="h-5 w-5 text-gray-400" />
-                </div>
-                <input
-                  id="password"
-                  name="password"
-                  type={showPassword ? 'text' : 'password'}
-                  autoComplete="current-password"
-                  required
-                  value={formData.password}
-                  onChange={handleInputChange}
-                  className="block w-full pl-10 pr-10 py-3 border border-gray-300 rounded-md leading-5 bg-white placeholder-gray-500 focus:outline-none focus:placeholder-gray-400 focus:ring-1 focus:ring-primary-500 focus:border-primary-500"
-                  placeholder="Enter your password"
-                />
-                <button
-                  type="button"
-                  className="absolute inset-y-0 right-0 pr-3 flex items-center"
-                  onClick={() => setShowPassword(!showPassword)}
-                >
-                  {showPassword ? (
-                    <EyeOff className="h-5 w-5 text-gray-400 hover:text-gray-600" />
-                  ) : (
-                    <Eye className="h-5 w-5 text-gray-400 hover:text-gray-600" />
-                  )}
-                </button>
-              </div>
-            </div>
-
-            {/* Remember Me & Forgot Password */}
-            <div className="flex items-center justify-between">
-              <div className="flex items-center">
-                <input
-                  id="remember-me"
-                  name="remember-me"
-                  type="checkbox"
-                  className="h-4 w-4 text-primary-600 focus:ring-primary-500 border-gray-300 rounded"
-                />
-                <label htmlFor="remember-me" className="ml-2 block text-sm text-gray-700">
-                  Remember me
-                </label>
-              </div>
-
-              <div className="text-sm">
-                <a href="#" className="font-medium text-primary-600 hover:text-primary-500">
-                  Forgot your password?
-                </a>
-              </div>
-            </div>
-
-            {/* Submit Button */}
-            <div>
-              <button
-                type="submit"
-                className="group relative w-full flex justify-center py-3 px-4 border border-transparent text-sm font-medium rounded-md text-white bg-primary-600 hover:bg-primary-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-primary-500 transition-colors duration-200"
-              >
-                <span className="absolute left-0 inset-y-0 flex items-center pl-3">
-                  <User className="h-5 w-5 text-primary-500 group-hover:text-primary-400" />
-                </span>
-                Sign in
-              </button>
-            </div>
-
-            {/* Divider */}
-            <div className="mt-6">
-              <div className="relative">
-                <div className="absolute inset-0 flex items-center">
-                  <div className="w-full border-t border-gray-300" />
-                </div>
-                <div className="relative flex justify-center text-sm">
-                  <span className="px-2 bg-white text-gray-500">Don't have an account?</span>
-                </div>
-              </div>
-            </div>
-
-            {/* Sign Up Link */}
-            <div className="text-center">
-              <a
-                href="/membership/voluntary"
-                className="font-medium text-primary-600 hover:text-primary-500"
-              >
-                Join SRC as a Volunteer
-              </a>
-            </div>
-          </form>
-        </div>
-
-        {/* Footer */}
-        <div className="text-center">
-          <p className="text-sm text-primary-100">
-            © {new Date().getFullYear()} Social Responsibility Council. All rights reserved.
-          </p>
+    <div className="min-h-screen bg-gray-50 flex flex-col">
+      {/* Hero Section (similar style to Gallery.jsx) */}
+      <div className="relative h-[250px] bg-gradient-to-br from-[#1D3A7C] to-[#2C498D]/40 overflow-hidden">
+        <div
+          className="absolute inset-0 opacity-20"
+          style={{
+            backgroundImage: "url(/static/icon.png)",
+            backgroundSize: "cover",
+            backgroundPosition: "center",
+          }}
+        />
+        <div className="relative h-full flex items-center justify-center">
+          <div className="text-center px-4">
+            <h1 className="text-4xl md:text-5xl font-bold text-white mb-4">
+              CSR Projects
+            </h1>
+          </div>
         </div>
       </div>
+
+      {/* Main Content */}
+      <main className="flex-1 w-full max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-10">
+        {/* Projects Grid */}
+        {csrProjects.length > 0 && (
+          <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
+            {csrProjects.map((project) => (
+              <div
+                key={project.id}
+                className="bg-white rounded-lg shadow-md hover:shadow-xl transition duration-200 border border-gray-200 flex flex-col"
+              >
+                <div className="px-5 pt-5">
+                  <div className="flex items-start gap-2 mb-1">
+                    <Building2 className="h-4 w-4 mt-1 text-primary-700" />
+                    <h2 className="text-base font-semibold text-primary-800 leading-snug">
+                      {project.projectName}
+                    </h2>
+                  </div>
+                  <div className="flex items-center gap-2 mb-3">
+                    <Building2 className="h-3 w-3 text-gray-400" />
+                    <p className="text-xs font-medium text-gray-500">
+                      {project.psuName}
+                    </p>
+                  </div>
+                </div>
+                <div className="px-5 pb-4 flex-1">
+                  <p className="text-sm text-gray-700 leading-relaxed">
+                    {project.description}
+                  </p>
+                </div>
+                <div className="px-5 pb-4 mt-auto">
+                  <div className="flex justify-end">
+                    <a
+                      href={project.dashboardLink || "#"}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className={`inline-flex items-center gap-2 rounded-md border text-xs font-semibold tracking-[0.16em] uppercase px-4 py-2 transition-colors ${
+                        project.dashboardLink
+                          ? "border-primary-700 text-primary-700 hover:bg-primary-700 hover:text-white bg-white"
+                          : "border-gray-300 text-gray-400 cursor-not-allowed"
+                      }`}
+                      aria-disabled={!project.dashboardLink}
+                    >
+                      <LineChart className="h-4 w-4" />
+                      <span>View Dashboard</span>
+                    </a>
+                  </div>
+                </div>
+              </div>
+            ))}
+          </div>
+        )}
+
+        {/* No Projects Message */}
+        {csrProjects.length === 0 && (
+          <div className="mt-10">
+            <div className="bg-white rounded-xl shadow-md border border-gray-100 px-8 py-10 text-center">
+              <div className="mx-auto mb-4 h-16 w-16 rounded-full border-2 border-dashed border-gray-300 flex items-center justify-center text-gray-400 text-3xl">
+                📂
+              </div>
+              <h3 className="text-lg font-semibold text-gray-700 mb-2">
+                No CSR Projects Available
+              </h3>
+              <p className="text-sm text-gray-500 max-w-md mx-auto">
+                CSR projects will be listed here as they become available.
+              </p>
+            </div>
+          </div>
+        )}
+      </main>
     </div>
   );
 };

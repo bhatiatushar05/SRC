@@ -20,22 +20,22 @@ const MasterFooterTwo = () => {
             <h3 className="text-lg font-semibold mb-4">Quick Links</h3>
             <ul className="space-y-2">
               <li>
-                <Link to="/about" className="text-gray-300 hover:text-white transition-colors text-sm">
+                <Link to="/" className="text-gray-300 hover:text-white transition-colors text-sm">
                   About Us
                 </Link>
               </li>
               <li>
-                <Link to="/capabilities" className="text-gray-300 hover:text-white transition-colors text-sm">
+                <Link to="/" className="text-gray-300 hover:text-white transition-colors text-sm">
                   Capabilities
                 </Link>
               </li>
               <li>
-                <Link to="/events" className="text-gray-300 hover:text-white transition-colors text-sm">
+                <Link to="/" className="text-gray-300 hover:text-white transition-colors text-sm">
                   Events
                 </Link>
               </li>
               <li>
-                <Link to="/membership/voluntary" className="text-gray-300 hover:text-white transition-colors text-sm">
+                <Link to="/" className="text-gray-300 hover:text-white transition-colors text-sm">
                   Join Us
                 </Link>
               </li>

@@ -168,7 +168,7 @@ const Gallery = () => {
   return (
     <div className="min-h-screen bg-white">
       {/* Hero Section */}
-      <div className="relative h-[250px] bg-gradient-to-br from-[#1D3A7C] to-[#2C498D]/60 overflow-hidden">
+      <div className="relative h-[250px] bg-gradient-to-br from-[#1D3A7C] to-[#2C498D]/40 overflow-hidden">
         <div
           className="absolute inset-0 opacity-20"
           style={{

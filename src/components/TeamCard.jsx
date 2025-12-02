@@ -1,6 +1,6 @@
 const TeamCard = ({ member }) => {
   return (
-    <div className="bg-white rounded-lg shadow-md overflow-hidden hover:shadow-lg transition-shadow">
+    <div className="bg-white rounded-lg shadow-md overflow-hidden hover:shadow-lg transition-shadow text-center">
       <div className="aspect-w-3 aspect-h-4">
         <img
           src={member.image || '/static/placeholder.png'}
@@ -13,7 +13,7 @@ const TeamCard = ({ member }) => {
           {member.name}
         </h3>
         <p className="text-primary-600 font-medium mb-2">
-          {member.position}
+          {member.role}
         </p>
         <p className="text-gray-600 text-sm">
           {member.description}
